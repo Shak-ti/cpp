@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstring>
 
+// "::" = opérateur de résolution de portée
+// "<< et >>" = opérateurs de gestion des flux
 int	main(int argc, char **argv)
 {
 	int	i;
