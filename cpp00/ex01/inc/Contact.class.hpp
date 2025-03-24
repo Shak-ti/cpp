@@ -1,7 +1,7 @@
 #ifndef CONTACT_CLASS_H
 # define CONTACT_CLASS_H
-#include <iostream>
-#include <cstring>
+
+# include "header.hpp"
 
 class Contact {
 
@@ -15,24 +15,18 @@ class Contact {
 
 		Contact( void );
 		~Contact( void );
+		
 		static int	getNbInst( void );
-		static int	getNbInitializedInst( void );
-		void	print( void ) const;
-		void	addInfos( void );
+		void		print( void ) const;
+		void		addInfos( std::string *infos );
 
 	private: //add "_"
 
-		//accesseurs
-		void	setContact( void );
-		int		getContact( void ) const;
-		bool	testEmpty( void ) const;
-
-		int		compareContact( Contact * to_compare ) const;
+		int			compareContact( Contact * to_compare ) const;
 		//comparaison physique = comparer l'adresse
 		//comparaison structurelle = comparer le contenu
 
 		static int	_nbInst;
-		static int	_nbInitializedInst;
 		//static = non membre
 	};
 

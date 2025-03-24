@@ -1,10 +1,7 @@
-#include "../inc/PhoneBook.class.hpp"
-#include "../inc/Contact.class.hpp"
-#include <iostream>
-#include <cstring>
+#include "../inc/header.hpp"
 
-//this : pointeur d'instance
-//ex: this->Répertoire[0]
+// Un paramètre est passé de façon discrete : le pointeur sur l'instance courante (this)
+//ex: this->contactList[0]
 PhoneBook::PhoneBook( void ) {
 	return ;
 }
@@ -13,32 +10,91 @@ PhoneBook::~PhoneBook( void ) {
 	return ;
 }
 
-// Un paramètre est passé de façon discrete : le pointeur sur l'instance courante (this)
 void	PhoneBook::add( void ) {
 	int	spot;
+
+	std::string	infos[5];
 	std::cout << "New contact creation...\n";
-	spot = this->testFull();
-	this->contactList[spot].addInfos();
+	spot = this->getSpot();
+	if (spot == -1)
+		return ;
+	std::cout << "Registering contact n°" << spot << std::endl;
+	if (PhoneBook::getInfos(infos))
+		return ;
+	this->contactList[spot].addInfos(infos);
+	_lastEntry += 1;
 	return ;
 }
 
-bool	PhoneBook::testFull( void ) const {
-	int	nbInst;
-
-	nbInst = this->contactList->getNbInitializedInst();
-	std::cout << nbInst << std::endl;
-	if ( nbInst >= 8)
-	{
-		std::cout << "PhoneBook full, replacing last entry\n";
-		return (nbInst % 8);
+int	PhoneBook::getInfos( std::string *infos ) const {
+	std::string	buf;
+	std::cout << "Firstname : ";
+	std::cin >> buf;
+	if (buf.empty()) {
+		std::cout << "No empty field authorized, please restart registration\n";
+		return (1);
 	}
-	std::cout << "Contact n°" << nbInst << " created" << std::endl;
-	return (nbInst);
+	infos[0] = buf;
+	std::cout << "Lastname : ";
+	std::cin >> buf;
+	if (buf.empty()) {
+		std::cout << "No empty field authorized, please restart registration\n";
+		return (1);
+	}
+	infos[1]= buf;
+	std::cout << "Nickname : ";
+	std::cin >> buf;
+	if (buf.empty()) {
+		std::cout << "No empty field authorized, please restart registration\n";
+		return (1);
+	}
+	infos[2] = buf;
+	std::cout << "Phone number : ";
+	std::cin >> buf;
+	if (buf.empty()) {
+		std::cout << "No empty field authorized, please restart registration\n";
+		return (1);
+	}
+	infos[3] = buf;
+	std::cout << "Darkest secret : ";
+	std::cin >> buf;
+	if (buf.empty()) {
+		std::cout << "No empty field authorized, please restart registration\n";
+		return (1);
+	}
+	infos[4] = buf;
+	return (0);
 }
+
+int		PhoneBook::getSpot( void ) {
+	int			lastEntry;
+	std::string	buf;
+
+	lastEntry = this->getLastEntry();
+	if (lastEntry < 8)
+		return (lastEntry + 1);
+	else {
+		std::cout << "WARNING : PhoneBook full\n";
+		std::cout << "Replacing contact n°" << lastEntry << ". Proceed ?(yes/no)\n";
+		std::cin >> buf;
+		if (buf.compare("yes"))	
+			return (lastEntry);
+		else if (buf.compare("no"))
+			return (-1);
+		else {
+			std::cout << "Non conventional answer, restarting...\n";
+			return (-1);
+		}
+	}
+	return (0);
+}
+
 void	PhoneBook::search( void ) const {
 	return ;
 }
 
-void	PhoneBook::exit( void ) const {
-	return ;
+int		PhoneBook::getLastEntry( void ) {
+	return PhoneBook::_lastEntry;
 }
+
+int		PhoneBook::_lastEntry = -1;

@@ -1,5 +1,4 @@
-#include "../inc/Contact.class.hpp"
-#include "../inc/PhoneBook.class.hpp"
+#include "../inc/header.hpp"
 
 int	main()
 {
@@ -12,10 +11,12 @@ int	main()
 		std::cin >> buf;
 		if (!(buf.compare("EXIT")))
 			return (0);
-		if (!(buf.compare("ADD")))
+		else if (!(buf.compare("ADD")))
 			phoneBook.add();
-		if (!(buf.compare("SEARCH")))
+		else if (!(buf.compare("SEARCH")))
 			phoneBook.search();
+		else
+			std::cout << "Usage : 'ADD', 'SEARCH' or 'EXIT'\n";
 	}
 	return (0);
 }

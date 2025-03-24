@@ -1,4 +1,4 @@
-#include "../inc/Contact.class.hpp"
+#include "../inc/header.hpp"
 
 // Liste d'initialisation (et pas d'attribution)
 Contact::Contact( void ) : firstName( "" ), lastName(""), nickName(""), phoneNumber(""), darkestSecret("") {
@@ -11,34 +11,12 @@ Contact::~Contact( void ) {
 	return ;
 }
 
-void	Contact::addInfos( void ) {
-	std::string	buf;
-	std::cout << "Firstname : ";
-	std::cin >> buf;
-	this->firstName = buf;
-	std::cout << "Lastname : ";
-	std::cin >> buf;
-	this->lastName = buf;
-	std::cout << "Nickname : ";
-	std::cin >> buf;
-	this->nickName = buf;
-	std::cout << "Phone number : ";
-	std::cin >> buf;
-	this->phoneNumber = buf;
-	std::cout << "Darkest secret : ";
-	std::cin >> buf;
-	this->darkestSecret = buf;
-	_nbInitializedInst += 1;
-	if (this->testEmpty())
-		
-	return ;
-}
-
-int		Contact::getContact( void ) const {
-	return (0);
-}
-
-void	Contact::setContact( void ) {
+void	Contact::addInfos( std::string *infos ) {
+	this->firstName = infos[0];
+	this->lastName = infos[1];
+	this->nickName = infos[2];
+	this->phoneNumber = infos[3];
+	this->darkestSecret = infos[4];
 	return ;
 }
 
@@ -57,44 +35,10 @@ int		Contact::compareContact( Contact * to_compare ) const {
 	return (0);
 }
 
-bool	Contact::testEmpty( void ) const {
-	if (this->firstName.empty())
-	{
-		std::cout << "FirstName can't be empty, please restart contact registration\n";
-		return (true);
-	}
-	if (this->lastName.empty())
-	{
-		std::cout << "LastName can't be empty, please restart contact registration\n";
-		return (true);
-	}
-	if (this->nickName.empty())
-	{
-		std::cout << "NickName can't be empty, please restart contact registration\n";
-		return (true);
-	}
-	if (this->phoneNumber.empty())
-	{
-		std::cout << "PhoneNumber can't be empty, please restart contact registration\n";
-		return (true);
-	}
-	if (this->darkestSecret.empty())
-	{
-		std::cout << "DarkestSecret can't be empty, please restart contact registration\n";
-		return (true);
-	}
-	return (false);
-}
-
 int		Contact::getNbInst( void ) {
 	return Contact::_nbInst;
-}
-
-int		Contact::getNbInitializedInst( void ) {
-	return Contact::_nbInitializedInst;
 }
 
 //static donc ne dépend pas d'une instance en particulier
 //cette ligne sert à l'initialiser
 int		Contact::_nbInst = 0;
-int		Contact::_nbInitializedInst = 0;
