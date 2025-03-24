@@ -11,7 +11,7 @@ class PhoneBook {
 	//public : accessible depuis l'extérieur de la classe
 	public:
 
-		Contact	Répertoire[8];
+		Contact	contactList[8];
 		// Attribut membre : variable appartenant à la classe
 		// Pas mal de les initialiser dans le constructeur
 
@@ -24,6 +24,7 @@ class PhoneBook {
 		void	add( void );
 		void	search( void ) const;
 		void	exit( void ) const;
+		bool	testFull( void ) const;
 		// const signifie qu'on ne fait aucune modification de l'instance courante dans cette fonction
 };
 

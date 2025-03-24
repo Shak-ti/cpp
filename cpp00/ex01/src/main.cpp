@@ -1,12 +1,14 @@
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
+#include "../inc/Contact.class.hpp"
+#include "../inc/PhoneBook.class.hpp"
 
 int	main()
 {
 	std::string	buf;
 	PhoneBook	phoneBook;
+
 	while (1)
 	{
+		std::cout << "[phonebookManager] $ ";
 		std::cin >> buf;
 		if (!(buf.compare("EXIT")))
 			return (0);
