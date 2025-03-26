@@ -11,7 +11,7 @@ class PhoneBook {
 	//public : accessible depuis l'extérieur de la classe
 	public:
 
-		Contact	contactList[8];
+		Contact	contactList[2];
 		// Attribut membre : variable appartenant à la classe
 		// Pas mal de les initialiser dans le constructeur
 
