@@ -2,12 +2,10 @@
 
 // Liste d'initialisation (et pas d'attribution)
 Contact::Contact( void ) : firstName( "" ), lastName(""), nickName(""), phoneNumber(""), darkestSecret("") {
-	Contact::_nbInst += 1;
 	return ;
 }
 
 Contact::~Contact( void ) {
-	Contact::_nbInst -= 1;
 	return ;
 }
 
@@ -17,32 +15,26 @@ void	Contact::addInfos( std::string *infos ) {
 	this->nickName = infos[2];
 	this->phoneNumber = infos[3];
 	this->darkestSecret = infos[4];
-	return ;
 }
 
 void	Contact::print( void ) const {
-	std::cout << MAGENTA << "Firstname : " << RESET << this->firstName << std::endl;
-	std::cout << MAGENTA << "Lastname : " << RESET << this->lastName << std::endl;
-	std::cout << MAGENTA << "Nickname : " << RESET << this->nickName << std::endl;
-	std::cout << MAGENTA << "Phone number : " << RESET << this->phoneNumber << std::endl;
-	std::cout << MAGENTA << "Darkest secret : " << RESET << this->darkestSecret << std::endl;
-	return ;
+	std::cout << MAGENTA << std::setw(20) << std::left << "Firstname : " << RESET;
+	std::cout << this->firstName << std::endl;
+	std::cout << MAGENTA << std::setw(20) << std::left << "Lastname : " << RESET;
+	std::cout << this->lastName << std::endl;
+	std::cout << MAGENTA << std::setw(20) << std::left << "Nickname : " << RESET;
+	std::cout << this->nickName << std::endl;
+	std::cout << MAGENTA << std::setw(20) << std::left << "Phone number : " << RESET;
+	std::cout << this->phoneNumber << std::endl;
+	std::cout << MAGENTA << std::setw(20) << std::left << "Darkest secret : " << RESET;
+	std::cout << this->darkestSecret << std::endl;
 }
 
-void	Contact::printSimple( void ) const {
-	std::cout << MAGENTA << "|" << this->firstName << "|" << this->lastName << "|" <<  this->nickName << "|" << RESET;
+void	Contact::printSimple( int index ) const {
+	std::cout << MAGENTA ;
+	std::cout << std::setw(1) << "|" << std::setw(10) << index;
+	std::cout << std::setw(1) << "|" << std::setw(10) << this->firstName;
+	std::cout << std::setw(1) << "|" << std::setw(10) << this->lastName;
+	std::cout << std::setw(1) << "|" << std::setw(10) <<  this->nickName;
+	std::cout << std::setw(1) << "|" << RESET;
 }
-
-int		Contact::compareContact( Contact * to_compare ) const {
-	if (to_compare->firstName.compare("test"))
-		return (1);
-	return (0);
-}
-
-int		Contact::getNbInst( void ) {
-	return Contact::_nbInst;
-}
-
-//static donc ne dépend pas d'une instance en particulier
-//cette ligne sert à l'initialiser
-int		Contact::_nbInst = 0;

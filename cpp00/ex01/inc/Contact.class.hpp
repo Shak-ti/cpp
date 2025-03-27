@@ -16,20 +16,9 @@ class Contact {
 		Contact( void );
 		~Contact( void );
 		
-		static int	getNbInst( void );
 		void		print( void ) const;
-		void		printSimple( void ) const;
+		void		printSimple( int index ) const;
 		void		addInfos( std::string *infos );
-
-	private: //add "_"
-
-		int			compareContact( Contact * to_compare ) const;
-		//comparaison physique = comparer l'adresse
-		//comparaison structurelle = comparer le contenu
-
-		static int	_nbInst;
-		//static = non membre
-	};
-
+};
 
 #endif
