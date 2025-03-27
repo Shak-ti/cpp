@@ -5,7 +5,7 @@ int	main()
 	std::string	buf;
 	PhoneBook	phoneBook;
 
-	std::cout << BLUE << "[phonebookManager] $ ";
+	std::cout << BLUE << "[phonebookManager] $ " << RESET;
 	while (std::getline(std::cin, buf))
 	{		
 		if (!(buf.compare("EXIT")))
@@ -15,8 +15,8 @@ int	main()
 		else if (!(buf.compare("SEARCH")))
 			phoneBook.search();
 		else
-			std::cout << RED << "Usage : 'ADD', 'SEARCH' or 'EXIT'\n";
-		std::cout << "[phonebookManager] $ ";
+			std::cout << RED << "Usage : 'ADD', 'SEARCH' or 'EXIT'\n" << RESET;
+		std::cout << BLUE << "[phonebookManager] $ " << RESET;
 	}
 	std::cout << std::endl;
 	return (0);

@@ -21,12 +21,16 @@ void	Contact::addInfos( std::string *infos ) {
 }
 
 void	Contact::print( void ) const {
-	std::cout << "Firstname 		: " << this->firstName << std::endl;
-	std::cout << "Lastname 			: " << this->lastName << std::endl;
-	std::cout << "Nickname 			: " << this->nickName << std::endl;
-	std::cout << "Phone number		: " << this->phoneNumber << std::endl;
-	std::cout << "Darkest secret	: " << this->darkestSecret << std::endl;
+	std::cout << MAGENTA << "Firstname : " << RESET << this->firstName << std::endl;
+	std::cout << MAGENTA << "Lastname : " << RESET << this->lastName << std::endl;
+	std::cout << MAGENTA << "Nickname : " << RESET << this->nickName << std::endl;
+	std::cout << MAGENTA << "Phone number : " << RESET << this->phoneNumber << std::endl;
+	std::cout << MAGENTA << "Darkest secret : " << RESET << this->darkestSecret << std::endl;
 	return ;
+}
+
+void	Contact::printSimple( void ) const {
+	std::cout << MAGENTA << "|" << this->firstName << "|" << this->lastName << "|" <<  this->nickName << "|" << RESET;
 }
 
 int		Contact::compareContact( Contact * to_compare ) const {

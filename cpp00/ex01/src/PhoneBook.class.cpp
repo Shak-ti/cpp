@@ -12,55 +12,53 @@ PhoneBook::~PhoneBook( void ) {
 
 void	PhoneBook::add( void ) {
 	int	spot;
-
 	std::string	infos[5];
-	std::cout << "New contact creation...\n";
-	_lastEntry += 1;
-	spot = this->getSpot();
-	if (spot == -1) {
+
+	try {
+		std::cout << BLUE << "\nNew contact creation...\n" << RESET;
+		_lastEntry += 1;
+		spot = this->_getSpot();
+		std::cout << BLUE << "Registering contact n°" << spot << ":\n\n" << RESET;
+		PhoneBook::getInfos(infos);
+		this->contactList[spot].addInfos(infos);
+	} catch (const std::exception &e) {
+		std::cout << RED << e.what() << RESET;
 		_lastEntry -= 1;
 		return ;
 	}
-	std::cout << "Registering contact n°" << spot << std::endl;
-	if (PhoneBook::getInfos(infos)) {
-		_lastEntry -= 1;		
-		return ;
-	}
-	this->contactList[spot].addInfos(infos);
-	return ;
 }
 
-int	PhoneBook::getInfos( std::string *infos ) const {
+void	PhoneBook::getInfos( std::string *infos ) const {
 	std::string	buf;
-	try {
-		std::cout << "Firstname : ";
-		if (!std::getline(std::cin, buf) or buf.empty())
-			throw std::logic_error("No empty field authorized, please restart registration\n");
-		infos[0] = buf;
-		std::cout << "Lastname : ";
-		if (!std::getline(std::cin, buf) or buf.empty())
-			throw std::logic_error("No empty field authorized, please restart registration\n");	
-		infos[1]= buf;
-		std::cout << "Nickname : ";
-		if (!std::getline(std::cin, buf) or buf.empty())
-			throw std::logic_error("No empty field authorized, please restart registration\n");
-		infos[2] = buf;
-		std::cout << "Phone number : ";
-		if (!std::getline(std::cin, buf) or buf.empty())
-			throw std::logic_error("No empty field authorized, please restart registration\n");
-		infos[3] = buf;
-		std::cout << "Darkest secret : ";
-		if (!std::getline(std::cin, buf) or buf.empty())
-			throw std::logic_error("No empty field authorized, please restart registration\n");
-		infos[4] = buf;
-	} catch (const std::exception &e) {
-		std::cout << e.what();
-		return (1);
-	}
-	return (0);
+
+	std::cout << "Firstname : ";
+	std::getline(std::cin, buf);
+	if (std::cin.eof() or buf.empty())
+		throw std::logic_error("No empty field authorized, please restart registration\n");
+	infos[0] = buf;
+	std::cout << "Lastname : ";
+	std::getline(std::cin, buf);
+	if (std::cin.eof() or buf.empty())
+		throw std::logic_error("No empty field authorized, please restart registration\n");
+	infos[1]= buf;
+	std::cout << "Nickname : ";
+	std::getline(std::cin, buf);
+	if (std::cin.eof() or buf.empty())
+		throw std::logic_error("No empty field authorized, please restart registration\n");
+	infos[2] = buf;
+	std::cout << "Phone number : ";
+	std::getline(std::cin, buf);
+	if (std::cin.eof() or buf.empty())
+		throw std::logic_error("No empty field authorized, please restart registration\n");
+	infos[3] = buf;
+	std::cout << "Darkest secret : ";
+	std::getline(std::cin, buf);
+	if (std::cin.eof() or buf.empty())
+		throw std::logic_error("No empty field authorized, please restart registration\n");
+	infos[4] = buf;
 }
 
-int		PhoneBook::getSpot( void ) {
+int		PhoneBook::_getSpot( void ) {
 	int			lastEntry;
 	std::string	buf;
 
@@ -69,24 +67,60 @@ int		PhoneBook::getSpot( void ) {
 		return (lastEntry + 1);
 	else {
 		std::cout << "WARNING : PhoneBook full\n";
-		std::cout << "Replacing contact n°" << lastEntry % 2 << ". Proceed ?(yes/no)\n";
-		std::cin >> buf;
-		if (!buf.compare("yes"))	{
-			std::cout << "okkkkkkkkkk " << lastEntry % 2 << std::endl;
+		std::cout << "Replacing contact n°" << lastEntry % 2 - 1 << ". Proceed ?(yes/no)\n";
+		std::getline(std::cin, buf);
+		if (!buf.compare("yes"))
 			return (lastEntry % 2);
-		}
 		else if (!buf.compare("no"))
-			return (-1);
-		else {
-			std::cout << "Non conventional answer, restarting...\n";
-			return (-1);
-		}
+			throw std::logic_error("Canceling registration... \n");
+		else
+			throw std::logic_error("Non conventional answer, please try again...\n");
 	}
 	return (0);
 }
 
 void	PhoneBook::search( void ) const {
-	return ;
+	std::string	buf;
+	int			index;
+
+	try {
+		PhoneBook::printTab();
+		std::cout << BLUE << "Enter index of choosen contact : " << RESET;
+		std::getline(std::cin,buf);
+		if (std::cin.eof())
+			throw std::logic_error("Empty answer, please try again...\n");
+		index = PhoneBook::getIndex(buf);
+		this->contactList[index].print();
+	} catch (const std::exception &e) {
+		std::cout << RED << e.what() << RESET;
+	}
+}
+
+void	PhoneBook::printTab( void ) const {
+	int	i;
+
+	i = 0;
+	if (PhoneBook::contactList[0].firstName.empty())
+		throw std::logic_error("No contact registered, why bother looking for emptyness...\n");
+	std::cout << MAGENTA << "|" << "Firstname" << "|" << "Lastname" << "|" << "Nickname" << "|\n" << RESET;
+	while (i < 8 && !PhoneBook::contactList[i].firstName.empty())
+	{
+		PhoneBook::contactList[i++].printSimple();
+	}
+}
+
+int		PhoneBook::getIndex( std::string buf ) const {
+	int	index;
+
+	for (size_t i = 0; i < buf.size(); i++)
+	{
+		if (!std::isdigit(buf[i]))
+			throw std::logic_error("Please enter a valid index next time...\n");
+	}
+	index = atoi(buf.c_str());
+	if (index > 8 or index < 0)
+		throw std::logic_error("Please enter a valid index next time...\n");
+	return (index);
 }
 
 int		PhoneBook::getLastEntry( void ) {

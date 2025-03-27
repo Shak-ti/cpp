@@ -23,14 +23,15 @@ class PhoneBook {
 		// Fonction membre : peut être appelé par la classe
 		void		add( void );
 		void		search( void ) const;
-		int			getInfos( std::string *infos ) const;
+		void		getInfos( std::string *infos ) const;
 		int			getLastEntry( void );
+		void		printTab( void ) const;
+		int			getIndex( std::string ) const;
+
 		// const signifie qu'on ne fait aucune modification de l'instance courante dans cette fonction = pas de "this"
 
-	private:
-	
-		static int	_lastEntry;
-		int			getSpot( void );
+	static int	_lastEntry;
+	int			_getSpot( void );
 };
 
 

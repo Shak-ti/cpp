@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <cstring>
+# include <iomanip>
+# include <stdlib.h>
 
 # include "Contact.class.hpp"
 # include "PhoneBook.class.hpp"

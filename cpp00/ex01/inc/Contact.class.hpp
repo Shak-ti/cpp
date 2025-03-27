@@ -18,6 +18,7 @@ class Contact {
 		
 		static int	getNbInst( void );
 		void		print( void ) const;
+		void		printSimple( void ) const;
 		void		addInfos( std::string *infos );
 
 	private: //add "_"
