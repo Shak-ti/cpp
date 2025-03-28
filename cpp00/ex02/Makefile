@@ -1,12 +1,11 @@
-SRCS = Account.cpp test.cpp
+SRCS = Account.cpp tests.cpp
 OBJ_DIR = obj
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(patsubst %.cpp, $(OBJ_DIR)/%.d, $(SRCS))
 
-NAME = repertoire
+NAME = account
 COMPILE = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-INCLUDES = -I./inc
 
 all: $(NAME)
 
@@ -15,7 +14,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: %.cpp
 	mkdir -p $(OBJ_DIR)
-	$(COMPILE) $(CPPFLAGS) $(INCLUDES) -MMD -MF $(@:.o=.d) -c $< -o $@ -g
+	$(COMPILE) $(CPPFLAGS) -MMD -MF $(@:.o=.d) -c $< -o $@ -g
 
 -include $(DEPS)
 
