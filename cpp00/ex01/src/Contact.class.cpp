@@ -33,8 +33,19 @@ void	Contact::print( void ) const {
 void	Contact::printSimple( int index ) const {
 	std::cout << MAGENTA ;
 	std::cout << std::setw(1) << "|" << std::setw(10) << index;
-	std::cout << std::setw(1) << "|" << std::setw(10) << this->firstName;
-	std::cout << std::setw(1) << "|" << std::setw(10) << this->lastName;
-	std::cout << std::setw(1) << "|" << std::setw(10) <<  this->nickName;
-	std::cout << std::setw(1) << "|" << RESET;
+	std::cout << std::setw(1) << "|" << std::setw(10) << _truncate(this->firstName);
+	std::cout << std::setw(1) << "|" << std::setw(10) << _truncate(this->lastName);
+	std::cout << std::setw(1) << "|" << std::setw(10) <<  _truncate(this->nickName);
+	std::cout << std::setw(1) << "|" << std::endl << RESET;
+}
+
+std::string	Contact::_truncate( std::string str ) const {
+	std::string	copy;
+
+	copy = "";
+	if (str.length() <= 10)
+		return (str);
+	copy.append(str.substr(0, 9));
+	copy.append(".");
+	return (copy);
 }

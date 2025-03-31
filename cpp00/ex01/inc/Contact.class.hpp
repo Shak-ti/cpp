@@ -19,6 +19,10 @@ class Contact {
 		void		print( void ) const;
 		void		printSimple( int index ) const;
 		void		addInfos( std::string *infos );
+
+	private :
+
+		std::string	_truncate( std::string str ) const;
 };
 
 #endif

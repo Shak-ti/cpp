@@ -8,9 +8,11 @@ all: $(NAME)
 $(NAME): $(SRCS)
 	$(COMPILE) $(CPPFLAGS) $(SRCS) -o $(NAME) -g
 
+clean:
+
 fclean:
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all fclean re
+.PHONY: all fclean re clean

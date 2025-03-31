@@ -5,7 +5,7 @@ OBJ_DIR = obj
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.d, $(SRCS))
 
-NAME = repertoire
+NAME = PhoneBook
 COMPILE = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I./inc

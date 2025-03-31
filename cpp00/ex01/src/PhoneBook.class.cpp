@@ -14,14 +14,14 @@ void	PhoneBook::add( void ) {
 
 	try {
 		std::cout << BLUE << "\nNew contact creation...\n" << RESET;
-		_lastEntry += 1;
 		spot = this->_getSpot();
 		std::cout << BLUE << "Registering contact n°" << spot << ":\n\n" << RESET;
 		PhoneBook::_getInfos(infos);
-		this->contactList[spot].addInfos(infos);
+		this->_contactList[spot].addInfos(infos);
+		_nbContact += 1;
+		std::cout << _nbContact << std::endl;
 	} catch (const std::exception &e) {
 		std::cout << RED << e.what() << RESET;
-		_lastEntry -= 1;
 		return ;
 	}
 }
@@ -61,14 +61,14 @@ int		PhoneBook::_getSpot( void ) {
 	std::string	buf;
 
 	lastEntry = this->_getLastEntry();
-	if (lastEntry < 1)
+	if (lastEntry < 7)
 		return (lastEntry + 1);
 	else {
 		std::cout << "WARNING : PhoneBook full\n";
-		std::cout << "Replacing contact n°" << lastEntry % 2 - 1 << ". Proceed ?(yes/no)\n";
+		std::cout << "Replacing contact n°" << (lastEntry + 1) % 8 << ". Proceed ?(yes/no)\n";
 		std::getline(std::cin, buf);
 		if (!buf.compare("yes"))
-			return (lastEntry % 2);
+			return ((lastEntry + 1) % 8);
 		else if (!buf.compare("no"))
 			throw std::logic_error("Canceling registration... \n");
 		else
@@ -89,7 +89,7 @@ void	PhoneBook::search( void ) const {
 		if (std::cin.eof())
 			throw std::logic_error("Empty answer, please try again...\n");
 		index = PhoneBook::_getIndex(buf);
-		this->contactList[index].print();
+		this->_contactList[index].print();
 	} catch (const std::exception &e) {
 		std::cout << RED << e.what() << RESET;
 	}
@@ -99,16 +99,16 @@ void	PhoneBook::_printTab( void ) const {
 	int	i;
 
 	i = 0;
-	if (PhoneBook::contactList[0].firstName.empty())
-		throw std::logic_error("No contact registered, why bother looking for emptyness...\n");
+	if (this->_contactList[0].firstName.empty())
+		throw std::logic_error("No contact registered\n");
 	std::cout << MAGENTA << std::setw(1) << "|" << std::setw(10) << "INDEX";
 	std::cout << std::setw(1) << "|" << std::setw(10) << "FIRSTNAME";
 	std::cout << std::setw(1) << "|" << std::setw(10) << "LASTNAME";
 	std::cout << std::setw(1) << "|" << std::setw(10) << "NICKNAME";
 	std::cout << std::setw(1) << "|\n" << RESET;
-	while (i < 8 && !PhoneBook::contactList[i].firstName.empty())
+	while (i < 8 && !this->_contactList[i].firstName.empty())
 	{
-		PhoneBook::contactList[i].printSimple(i);
+		this->_contactList[i].printSimple(i);
 		i++;
 	}
 }
@@ -122,13 +122,13 @@ int		PhoneBook::_getIndex( std::string buf ) const {
 			throw std::logic_error("Please enter a valid index next time...\n");
 	}
 	index = atoi(buf.c_str());
-	if (index > 8 or index < 0)
+	if (index > 7 or index < 0)
 		throw std::logic_error("Please enter a valid index next time...\n");
 	return (index);
 }
 
 int		PhoneBook::_getLastEntry( void ) {
-	return PhoneBook::_lastEntry;
+	return PhoneBook::_nbContact;
 }
 
-int		PhoneBook::_lastEntry = -2;
+int		PhoneBook::_nbContact = -1;
