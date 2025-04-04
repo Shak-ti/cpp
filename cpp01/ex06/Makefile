@@ -3,7 +3,7 @@ OBJ_DIR = obj
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(patsubst %.cpp, $(OBJ_DIR)/%.d, $(SRCS))
 
-NAME = Harl
+NAME = harlFilter
 COMPILE = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
