@@ -1,29 +1,45 @@
 #include <iostream>
 #include <fstream>
 
+std::string	sed(std::string str, std::string toReplace, std::string replacement) {
+	size_t		location = 0;
+
+	location = str.find(toReplace, location);
+	while (location != std::string::npos) {
+		str.erase(location, toReplace.length());
+		str.insert(location, replacement);
+		location = str.find(toReplace);
+	}
+	return str;
+}
+
 int	main(int ac, char **av) {
 	if (ac != 4) {
 		std::cout << "Usage : ./sed filename toReplace replacement\n";
 		return 1;
 	}
-	std::string		name = av[1];
-	std::ifstream	filein(av[1], std::ifstream::in);
-	if (!filein) {
-		std::cout << "Can't open file " << name << std::endl;
+	std::ifstream	fileIn(av[1], std::ifstream::in);
+	if (!fileIn) {
+		std::cout << "Can't open file " << av[1] << std::endl;
 		return 1;
 	}
 
 	std::string		copy;
 	std::string		buf;
-	std::string		toReplace = av[2];
-	std::string		replacement = av[3];
-//	std::size_t		location;
-//	std::ofstream	fileout(replacementName, std::ifstream::in);
-	while (!filein.eof()) {
-		getline(filein, copy);
-		copy += buf + "\n";
+	while (!fileIn.eof()) {
+		getline(fileIn, buf);
+		copy.append(buf);
+		copy.append("\n");
 	}
-	std::cout << copy;
-	filein.close();
+	copy = sed(copy, av[2], av[3]);
+	std::string	nameIn = av[1];
+	nameIn.append(".replace");
+	const char		*nameOut = nameIn.c_str();
+	std::ofstream	fileOut(nameOut, std::ofstream::out);
+	if (!fileOut) {
+		std::cout << "Error creating file " << nameOut << std::endl;
+	}
+	fileOut << copy;
+	fileIn.close();
 	return 0;
 }
