@@ -1,4 +1,4 @@
-SRCS = Account.cpp tests.cpp
+SRCS = main.cpp Fixed.cpp
 OBJ_DIR = obj
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(patsubst %.cpp, $(OBJ_DIR)/%.d, $(SRCS))
