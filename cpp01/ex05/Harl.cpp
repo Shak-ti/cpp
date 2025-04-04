@@ -1,10 +1,7 @@
 #include "Harl.hpp"
 
 Harl::Harl( void ){
-	levels["debug"]=&Harl::debug;
-	levels["info"]=&Harl::info;
-	levels["warning"]=&Harl::warning;
-	levels["error"]=&Harl::error;
+
 }
 
 Harl::~Harl( void ) {
@@ -12,11 +9,22 @@ Harl::~Harl( void ) {
 }
 
 void	Harl::complain( std::string level ) {
-	if (levels.count(level)) {
-		(this->*levels[level])();
-	} else {
-		std::cout << "Invalid level: " << level << std::endl;
+	void	(Harl::*tab[4]) (void) = {
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+	std::string	tab2[4] = {"debug","info","warning","error"};
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (!level.compare(tab2[i])) {
+			(this->*tab[i])();
+			return ;
+		}
 	}
+	std::cout << "Invalid level: " << level << std::endl;
 }
 
 void	Harl::debug( void ) {

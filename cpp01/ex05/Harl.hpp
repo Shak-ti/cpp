@@ -17,7 +17,6 @@ class	Harl {
 		void	info( void );
 		void	warning( void );
 		void	error( void );
-		std::map< std::string, void (Harl::*)()> levels;
 };
 
 #endif

@@ -31,7 +31,7 @@ int	main(int ac, char **av) {
 		case 1:
 			std::cout << "[ ERROR ]" << std::endl;
 			harl.complain("error");
-			break;
+			break ;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n";
 	}
