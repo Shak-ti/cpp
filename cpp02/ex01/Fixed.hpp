@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:16:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/04/07 15:53:13 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:37:28 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class Fixed {
 		Fixed( const float ) ;
 		~Fixed( void ) ;
 		Fixed &operator=( const Fixed& );
-		ostream &operator<<( ostream&, const Fixed& );
 		
 		int		getRawBits( void ) const ;
 		void	setRawBits( int const raw ) ;
@@ -39,6 +38,9 @@ class Fixed {
 		int					_value;
 		//nb bit de la partie fractionnaire
 		static const int	_frac;
-};
+
+	};
+	
+std::ostream& operator<<( std::ostream& os, const Fixed& nbr );
 
 #endif

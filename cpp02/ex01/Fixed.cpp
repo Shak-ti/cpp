@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/04/07 15:53:19 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/04/07 16:57:46 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ Fixed::Fixed() : _value(0) {
 }
 
 Fixed::Fixed( const int nb ) {
+	_value = nb;
 	_value = nb << 8;
 	std::cout << "Int constructor called\n";
 }
 
 Fixed::Fixed( const float nb ) {
+	_value = nb;
 	std::cout << "Float constructor called\n";
 }
 
@@ -39,13 +41,7 @@ Fixed& Fixed::operator=( const Fixed& toCopy ) {
 	return *this;
 }
 
-ostream& Fixed::operator<<( ostream& os, const Fixed& toCopy ) {
-	std::cout << "Insert operator called\n";
-	return *this;
-}
-
 int	Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called\n";
 	return _value;
 }
 
@@ -54,15 +50,25 @@ void	Fixed::setRawBits( int const raw ) {
 }
 
 float	Fixed::toFloat( void ) const {
-	float	res;
+	float	res = 0.0;
 	
 	return (res);
 }
 
 int	Fixed::toInt( void ) const {
-	int	res;
+	int	res = 0;
 	
 	return (res);
 }
 
 const int	Fixed::_frac = 8;
+
+std::ostream& operator<<( std::ostream& os, const Fixed& nbr ) {
+	int	left;
+	int	right;
+	
+	left = nbr.getRawBits() >> 8;
+	right = nbr.getRawBits() & 255;
+	os << left << "." << right;
+	return os;
+}
