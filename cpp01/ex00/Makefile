@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/04/07 12:34:54 by sconiat           #+#    #+#              #
+#    Updated: 2025/04/07 12:34:55 by sconiat          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJ_DIR = obj
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
