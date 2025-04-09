@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/04/07 16:57:46 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:24:58 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ Fixed::Fixed() : _value(0) {
 }
 
 Fixed::Fixed( const int nb ) {
-	_value = nb;
 	_value = nb << 8;
 	std::cout << "Int constructor called\n";
 }
 
 Fixed::Fixed( const float nb ) {
-	_value = nb;
+	_value = (nb << 23) >> 8;
 	std::cout << "Float constructor called\n";
 }
 
@@ -69,6 +68,9 @@ std::ostream& operator<<( std::ostream& os, const Fixed& nbr ) {
 	
 	left = nbr.getRawBits() >> 8;
 	right = nbr.getRawBits() & 255;
-	os << left << "." << right;
+	if (right == 0)
+		os << left;
+	else
+		os << left << "." << right;
 	return os;
 }
