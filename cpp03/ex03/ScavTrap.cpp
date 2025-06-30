@@ -81,3 +81,19 @@ void ScavTrap::guardGate( void ) {
 	}
 	std::cout << "ScavTrap " << _name << " is now in Gate Keeper mode!\n";
 }
+
+std::string	ScavTrap::getName( void ) {
+	return _name;
+}
+
+unsigned int	ScavTrap::getHitPoints( void ) const {
+	return _hitPoints;
+}
+
+unsigned int	ScavTrap::getEnergyPoints( void ) const {
+	return _energyPoints;
+}
+
+unsigned int	ScavTrap::getAttackDamage( void ) const {
+	return _attackDamage;
+}

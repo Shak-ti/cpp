@@ -12,13 +12,15 @@
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main( void ) {
-	ScavTrap	a("a");
+	DiamondTrap	a("a");
 
 	a.attack("b");
 	a.takeDamage(5);
 	a.beRepaired(3);
-	a.guardGate();
+	a.whoAmI();
 	return 0;
 }

@@ -14,7 +14,7 @@
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public:
 
@@ -23,10 +23,15 @@ class ScavTrap : public ClapTrap {
 		~ScavTrap( void );
 		ScavTrap& operator=( const ScavTrap& toCopy );
 
-		void attack( const std::string& target );
-		void takeDamage( unsigned int amount );
-		void beRepaired( unsigned int amount );
-		void guardGate( void );
+		void	attack( const std::string& target );
+		void	takeDamage( unsigned int amount );
+		void	beRepaired( unsigned int amount );
+		void	guardGate( void );
+
+		std::string		getName( void ) ;
+		unsigned int	getHitPoints( void ) const;
+		unsigned int	getEnergyPoints( void ) const;
+		unsigned int	getAttackDamage( void ) const;
 	
 	private:
 

@@ -23,10 +23,15 @@ class ClapTrap {
 		~ClapTrap( void );
 		ClapTrap &operator=( const ClapTrap& toCopy );
 		
-		void	attack( const std::string& target ) ;
-		void	takeDamage( unsigned int amount ) ;
-		void	beRepaired( unsigned int amount ) ;
-				
+		void			attack( const std::string& target ) ;
+		void			takeDamage( unsigned int amount ) ;
+		void			beRepaired( unsigned int amount ) ;
+
+		std::string		getName( void ) ;
+		unsigned int	getHitPoints( void ) const;
+		unsigned int	getEnergyPoints( void ) const;
+		unsigned int	getAttackDamage( void ) const;
+		
 	private:
 
 		std::string		_name;

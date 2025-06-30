@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 13:09:10 by sconiat           #+#    #+#             */
-/*   Updated: 2025/06/28 14:01:40 by sconiat          ###   ########.fr       */
+/*   Created: 2025/06/30 16:15:55 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/30 16:15:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class FragTrap : public ClapTrap {
 
 	public:
 
-		ScavTrap( std::string name );
-		ScavTrap( const ScavTrap& toCopy );
-		~ScavTrap( void );
-		ScavTrap& operator=( const ScavTrap& toCopy );
+		FragTrap( std::string name );
+		FragTrap( const FragTrap& toCopy );
+		~FragTrap( void );
+		FragTrap& operator=( const FragTrap& toCopy );
 
 		void attack( const std::string& target );
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
-		void guardGate( void );
-	
+		void highFivesGuys( void );
+
 	private:
 
-		std::string		_name;
-		unsigned int	_hitPoints;
-		unsigned int	_energyPoints;
-		unsigned int	_attackDamage;
-
+		std::string  _name;
+		unsigned int _hitPoints;
+		unsigned int _energyPoints;
+		unsigned int _attackDamage;
 };
 
 #endif

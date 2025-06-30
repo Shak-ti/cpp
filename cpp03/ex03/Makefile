@@ -10,12 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ_DIR = obj
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 DEPS = $(patsubst %.cpp, $(OBJ_DIR)/%.d, $(SRCS))
 
-NAME = ScavTrap
+NAME = DiamondTrap
 COMPILE = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
