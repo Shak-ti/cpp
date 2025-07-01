@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:09:06 by sconiat           #+#    #+#             */
-/*   Updated: 2025/06/28 14:00:25 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:16:18 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void ScavTrap::guardGate( void ) {
 	std::cout << "ScavTrap " << _name << " is now in Gate Keeper mode!\n";
 }
 
-std::string	ScavTrap::getName( void ) {
+std::string	ScavTrap::getName( void ) const {
 	return _name;
 }
 

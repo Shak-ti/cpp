@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:26:31 by sconiat           #+#    #+#             */
-/*   Updated: 2025/06/28 13:07:18 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:15:52 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 	_energyPoints--;
 }
 
-std::string	ClapTrap::getName( void ) {
+std::string	ClapTrap::getName( void ) const {
 	return _name;
 }
 

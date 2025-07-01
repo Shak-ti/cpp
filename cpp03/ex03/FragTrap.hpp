@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:15:55 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/30 16:15:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/01 12:16:10 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class FragTrap : virtual public ClapTrap {
 		void	beRepaired( unsigned int amount );
 		void	highFivesGuys( void );
 
-		std::string		getName( void ) ;
+		std::string		getName( void ) const ;
 		unsigned int	getHitPoints( void ) const;
 		unsigned int	getEnergyPoints( void ) const;
 		unsigned int	getAttackDamage( void ) const;

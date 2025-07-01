@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:21:06 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/30 17:21:06 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/01 12:15:01 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "FragTrap.hpp"
 # include "ScavTrap.hpp"
 
-class DiamondTrap : virtual public ClapTrap, virtual public FragTrap, virtual public ScavTrap {
+class DiamondTrap : public virtual FragTrap, public virtual ScavTrap {
 	public:
 
 		DiamondTrap( std::string name );
@@ -31,7 +31,7 @@ class DiamondTrap : virtual public ClapTrap, virtual public FragTrap, virtual pu
 		void	highFivesGuys( void );
 		void	whoAmI( void );
 
-		std::string		getName( void ) ;
+		std::string		getName( void ) const;
 		unsigned int	getHitPoints( void ) const;
 		unsigned int	getEnergyPoints( void ) const;
 		unsigned int	getAttackDamage( void ) const;

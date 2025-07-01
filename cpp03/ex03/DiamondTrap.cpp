@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:21:02 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/30 17:21:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/01 12:20:49 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(_name + "_clap_name") {
-	this->_name = name;
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(_name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name") {
 	this->_hitPoints = FragTrap::getHitPoints();
 	this->_energyPoints = ScavTrap::getEnergyPoints();
 	this->_attackDamage = FragTrap::getAttackDamage();
 	std::cout << "DiamondTrap " << this->_name << " created." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& toCopy) : ClapTrap(_name + "_clap_name")  {
-	this->_name = toCopy._name;
+DiamondTrap::DiamondTrap(const DiamondTrap& toCopy) : ClapTrap(toCopy._name + "_clap_name"), ScavTrap(toCopy._name + "_clap_name"), FragTrap(toCopy._name + "_clap_name") {
 	this->_hitPoints = toCopy.getHitPoints();
 	this->_energyPoints = toCopy.getEnergyPoints();
 	this->_attackDamage = toCopy.getAttackDamage();
@@ -29,17 +27,17 @@ DiamondTrap::DiamondTrap(const DiamondTrap& toCopy) : ClapTrap(_name + "_clap_na
 }
 
 DiamondTrap::~DiamondTrap(void) {
-	std::cout << "DiamondTrap " << this->_name << " destroyed." << std::endl;
+	std::cout << "DiamondTrap destructor called.\n";
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& toCopy) {
+	std::cout << "DiamondTrap copy assignment operator called\n";
 	if (this != &toCopy) {
 		this->_name = toCopy._name;
 		this->_hitPoints = toCopy._hitPoints;
 		this->_energyPoints = toCopy._energyPoints;
 		this->_attackDamage = toCopy._attackDamage;
 	}
-	std::cout << "DiamondTrap " << this->_name << " assigned." << std::endl;
 	return *this;
 }
 
@@ -67,7 +65,7 @@ void DiamondTrap::whoAmI(void) {
 	std::cout << "I am " << this->_name << ", my ClapTrap name is " << ClapTrap::getName() << "." << std::endl;
 }
 
-std::string	DiamondTrap::getName( void ) {
+std::string	DiamondTrap::getName( void ) const {
 	return _name;
 }
 

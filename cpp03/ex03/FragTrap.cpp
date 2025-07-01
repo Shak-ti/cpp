@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:15:57 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/30 16:15:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/01 12:16:06 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void FragTrap::highFivesGuys( void ) {
 	std::cout << "FragTrap " << _name << " is high fiving you!\n";
 }
 
-std::string	FragTrap::getName( void ) {
+std::string	FragTrap::getName( void ) const {
 	return _name;
 }
 

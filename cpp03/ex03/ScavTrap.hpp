@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:09:10 by sconiat           #+#    #+#             */
-/*   Updated: 2025/06/28 14:01:40 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/01 12:16:25 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ScavTrap : virtual public ClapTrap {
 		void	beRepaired( unsigned int amount );
 		void	guardGate( void );
 
-		std::string		getName( void ) ;
+		std::string		getName( void ) const ;
 		unsigned int	getHitPoints( void ) const;
 		unsigned int	getEnergyPoints( void ) const;
 		unsigned int	getAttackDamage( void ) const;
