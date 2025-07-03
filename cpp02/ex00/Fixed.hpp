@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:16:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/04/07 14:53:55 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/03 09:05:41 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ class Fixed {
 
 	private:
 
-		//valeur du nombre en virgule fixe
 		int					_value;
-		//nb bit de la partie fractionnaire
-		static const int	_frac;
+		static const int	_frac = 8;
 };
 
 #endif

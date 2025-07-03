@@ -6,7 +6,7 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/07 13:16:59 by sconiat           #+#    #+#              #
-#    Updated: 2025/07/03 09:16:54 by sconiat          ###   ########.fr        #
+#    Updated: 2025/05/14 10:10:43 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,11 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(COMPILE) $(CPPFLAGS) $(OBJS) -o $(NAME) -g
+	$(COMPILE) $(CPPFLAGS) $(OBJS) -o $(NAME) -lm
 
 $(OBJ_DIR)/%.o: %.cpp
 	mkdir -p $(OBJ_DIR)
-	$(COMPILE) $(CPPFLAGS) -MMD -MF $(@:.o=.d) -c $< -o $@ -g
+	$(COMPILE) $(CPPFLAGS) -MMD -MF $(@:.o=.d) -c $< -o $@
 
 -include $(DEPS)
 

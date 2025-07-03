@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:16:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 11:14:58 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/03 13:34:13 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,30 @@ class Fixed {
 		Fixed( const float ) ;
 		~Fixed( void ) ;
 		Fixed &operator=( const Fixed& );
+		Fixed &operator>( const Fixed& );
+		Fixed &operator<( const Fixed& );
+		Fixed &operator>=( const Fixed& );
+		Fixed &operator<=( const Fixed& );
+		Fixed &operator==( const Fixed& );
+		Fixed &operator!=( const Fixed& );
+		Fixed &operator+( const Fixed& );
+		Fixed &operator-( const Fixed& );
+		Fixed &operator*( const Fixed& );
+		Fixed &operator/( const Fixed& );
+		Fixed &operator++( int ); //suffixe
+		Fixed &operator--( int );
+		Fixed &operator++( void ); //préfixe
+		Fixed &operator--( void );
 		
-		int		getRawBits( void ) const ;
-		void	setRawBits( int const raw ) ;
-		float	toFloat( void ) const ;
-		int		toInt( void ) const ;
+		static Fixed	&max( Fixed&, Fixed& );
+		static Fixed	&max( const Fixed&, const Fixed& );
+		static Fixed	&min( Fixed&, Fixed& );
+		static Fixed	&min( const Fixed&, const Fixed& );
+
+		int				getRawBits( void ) const ;
+		void			setRawBits( int const raw ) ;
+		float			toFloat( void ) const ;
+		int				toInt( void ) const ;
 
 	private:
 
