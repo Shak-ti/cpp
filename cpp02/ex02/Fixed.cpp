@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 13:37:57 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/05 15:15:23 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,87 +35,149 @@ Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=( const Fixed& toCopy ) {
-	if (this == &toCopy) {
+Fixed& Fixed::operator=( const Fixed& rhs ) {
+	if (this == &rhs) {
 		std::cout << "Trying to copy same instance" << std::endl;
 		return *this;
 	}
 	std::cout << "Copy assignment operator called" << std::endl;
-	this->_value = toCopy.getRawBits();
+	this->_value = rhs.getRawBits();
 	return (*this);
 }
 
-Fixed& Fixed::operator>( const Fixed& ) {
+int Fixed::operator>( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value > rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+int Fixed::operator<( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value < rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+int Fixed::operator>=( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value >= rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+int Fixed::operator<=( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value <= rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+int Fixed::operator==( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value == rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+int Fixed::operator!=( const Fixed& rhs ) const {
+	if (this == &rhs) {
+		std::cout << "Comparing same instance" << std::endl;
+	}
+	if (this->_value != rhs.getRawBits()) {
+		return (0);
+	}
+	return (1);
+}
+
+Fixed Fixed::operator+( const Fixed& rhs) const {
+	return (Fixed(this->_value + rhs.getRawBits()));
+}
+
+Fixed Fixed::operator-( const Fixed& rhs) const {
+	return (Fixed(this->_value - rhs.getRawBits()));
+}
+
+Fixed Fixed::operator*( const Fixed& rhs) const {
+	return (Fixed(this->_value * rhs.getRawBits()));
+}
+
+Fixed Fixed::operator/( const Fixed& rhs) {
+	return (Fixed(this->_value / rhs.getRawBits()));
+}
+
+// Fixed Fixed::operator++( int diff ) const {
+// 	Fixed	res;
 	
-}
+// 	return (res);
+// }
 
-Fixed& Fixed::operator<( const Fixed& ) {
+// Fixed Fixed::operator--( int diff ) const {
+// 	Fixed	res;
 	
-}
+// 	return (res);
+// }
 
-Fixed& Fixed::operator>=( const Fixed& ) {
+// Fixed Fixed::operator++( void ) const {
+// 	Fixed	res;
 	
-}
+// 	return (res);
+// }
 
-Fixed& Fixed::operator<=( const Fixed& ) {
+// Fixed Fixed::operator--( void ) const {
+// 	Fixed	res;
 	
-}
+// 	return (res);
+// }
 
-Fixed& Fixed::operator==( const Fixed& ) {
+// static Fixed&	max( Fixed& lhs, Fixed& rhs) {
+// 	if (&lhs == &rhs) {
+// 		std::cout << "Comparing same instances" << std::endl;
+// 		return (lhs);
+// 	}
+// 	if (lhs > rhs) {
+// 		return (lhs);
+// 	}
+// 	return (rhs);
+// }
+
+// static Fixed&	max( const Fixed& lhs, const Fixed& rhs) {
+// 	Fixed	res = lhs;
 	
-}
+// 	return (res);
+// }
 
-Fixed& Fixed::operator!=( const Fixed& ) {
+// static Fixed&	min( Fixed& lhs, Fixed& rhs) {
+// 	if (&lhs == &rhs) {
+// 		std::cout << "Comparing same instances" << std::endl;
+// 		return (lhs);
+// 	}
+// 	if (lhs < rhs) {
+// 		return (lhs);
+// 	}
+// 	return (rhs);
+// }
 
-}
-
-Fixed& Fixed::operator+( const Fixed& ) {
-
-}
-
-Fixed& Fixed::operator-( const Fixed& ) {
-
-}
-
-Fixed& Fixed::operator*( const Fixed& ) {
+// static Fixed&	min( const Fixed& lhs, const Fixed& rhs) {
+// 	Fixed	res = lhs;
 	
-}
-
-Fixed& Fixed::operator/( const Fixed& ) {
-
-}
-
-Fixed& Fixed::operator++( int ) {
-
-}
-
-Fixed& Fixed::operator--( int ) {
-
-}
-
-Fixed& Fixed::operator++( void ) {
-
-}
-
-Fixed& Fixed::operator--( void ) {
-	
-}
-
-static Fixed&	max( Fixed&, Fixed& ) {
-	
-}
-
-static Fixed&	max( const Fixed&, const Fixed& ) {
-	
-}
-
-static Fixed&	min( Fixed&, Fixed& ) {
-
-}
-
-static Fixed&	min( const Fixed&, const Fixed& ) {
-
-}
+// 	return (res);
+// }
 
 
 int	Fixed::getRawBits( void ) const {

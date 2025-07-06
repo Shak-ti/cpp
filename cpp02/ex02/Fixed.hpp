@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:16:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 13:34:13 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/05 13:30:20 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,26 @@ class Fixed {
 		Fixed( const int ) ;
 		Fixed( const float ) ;
 		~Fixed( void ) ;
-		Fixed &operator=( const Fixed& );
-		Fixed &operator>( const Fixed& );
-		Fixed &operator<( const Fixed& );
-		Fixed &operator>=( const Fixed& );
-		Fixed &operator<=( const Fixed& );
-		Fixed &operator==( const Fixed& );
-		Fixed &operator!=( const Fixed& );
-		Fixed &operator+( const Fixed& );
-		Fixed &operator-( const Fixed& );
-		Fixed &operator*( const Fixed& );
-		Fixed &operator/( const Fixed& );
-		Fixed &operator++( int ); //suffixe
-		Fixed &operator--( int );
-		Fixed &operator++( void ); //préfixe
-		Fixed &operator--( void );
+		Fixed	&operator=( const Fixed& ) ;
+		int 	operator>( const Fixed& ) const ;
+		int		operator<( const Fixed& ) const ;
+		int		operator>=( const Fixed& ) const ;
+		int		operator<=( const Fixed& ) const ;
+		int		operator==( const Fixed& ) const ;
+		int		operator!=( const Fixed& ) const ;
+		Fixed	operator+( const Fixed& ) const ;
+		Fixed	operator-( const Fixed& ) const ;
+		Fixed	operator*( const Fixed& ) const ;
+		Fixed	operator/( const Fixed& ) ;
+		// Fixed	operator++( int ) const ; //suffixe
+		// Fixed	operator--( int ) const ;
+		// Fixed	operator++( void ) const ; //préfixe
+		// Fixed	operator--( void ) const ;
 		
-		static Fixed	&max( Fixed&, Fixed& );
-		static Fixed	&max( const Fixed&, const Fixed& );
-		static Fixed	&min( Fixed&, Fixed& );
-		static Fixed	&min( const Fixed&, const Fixed& );
+		// static Fixed	&max( Fixed&, Fixed& ) ;
+		// static Fixed	&max( const Fixed&, const Fixed& ) ;
+		// static Fixed	&min( Fixed&, Fixed& ) ;
+		// static Fixed	&min( const Fixed&, const Fixed& ) ;
 
 		int				getRawBits( void ) const ;
 		void			setRawBits( int const raw ) ;
