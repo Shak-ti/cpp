@@ -49,135 +49,109 @@ int Fixed::operator>( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value > rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value > rhs.getRawBits());
 }
 
 int Fixed::operator<( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value < rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value < rhs.getRawBits());
 }
 
 int Fixed::operator>=( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value >= rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value >= rhs.getRawBits());
 }
 
 int Fixed::operator<=( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value <= rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value <= rhs.getRawBits());
 }
 
 int Fixed::operator==( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value == rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value == rhs.getRawBits());
 }
 
 int Fixed::operator!=( const Fixed& rhs ) const {
 	if (this == &rhs) {
 		std::cout << "Comparing same instance" << std::endl;
 	}
-	if (this->_value != rhs.getRawBits()) {
-		return (0);
-	}
-	return (1);
+	return (this->_value != rhs.getRawBits());
 }
 
 Fixed Fixed::operator+( const Fixed& rhs) const {
-	return (Fixed(this->_value + rhs.getRawBits()));
+	return (Fixed((this->toFloat() + rhs.toFloat())));
 }
 
 Fixed Fixed::operator-( const Fixed& rhs) const {
-	return (Fixed(this->_value - rhs.getRawBits()));
+	return (Fixed((this->toFloat() - rhs.toFloat())));
 }
 
 Fixed Fixed::operator*( const Fixed& rhs) const {
-	return (Fixed(this->_value * rhs.getRawBits()));
+	return (Fixed((this->toFloat() * rhs.toFloat())));
 }
 
 Fixed Fixed::operator/( const Fixed& rhs) {
-	return (Fixed(this->_value / rhs.getRawBits()));
+	return (Fixed((this->toFloat() / rhs.toFloat())));
 }
 
-// Fixed Fixed::operator++( int diff ) const {
-// 	Fixed	res;
+Fixed Fixed::operator++( int diff ) { //suffixe
+	(void) diff;
+	++(this->_value);
+	return (*this);
+}
+
+Fixed Fixed::operator--( int diff ) {
+	(void) diff;
+	--(this->_value);
+	return (*this);
+}
+
+Fixed Fixed::operator++( void ) { //préfixe
+	Fixed	copy = *this;
 	
-// 	return (res);
-// }
+	++(this->_value);
+	return (copy);
+}
 
-// Fixed Fixed::operator--( int diff ) const {
-// 	Fixed	res;
+Fixed Fixed::operator--( void ) {
+	Fixed	copy = *this;
 	
-// 	return (res);
-// }
+	--(this->_value);
+	return (copy);
+}
 
-// Fixed Fixed::operator++( void ) const {
-// 	Fixed	res;
-	
-// 	return (res);
-// }
+Fixed	Fixed::max( Fixed& lhs, Fixed& rhs) {
+	if (lhs.getRawBits() > rhs.getRawBits())
+		return (lhs);
+	return (rhs);
+}
 
-// Fixed Fixed::operator--( void ) const {
-// 	Fixed	res;
-	
-// 	return (res);
-// }
+Fixed const	Fixed::max( const Fixed& lhs, const Fixed& rhs) {
+	if (lhs.getRawBits() > rhs.getRawBits())
+		return (lhs);
+	return (rhs);
+}
 
-// static Fixed&	max( Fixed& lhs, Fixed& rhs) {
-// 	if (&lhs == &rhs) {
-// 		std::cout << "Comparing same instances" << std::endl;
-// 		return (lhs);
-// 	}
-// 	if (lhs > rhs) {
-// 		return (lhs);
-// 	}
-// 	return (rhs);
-// }
+Fixed	Fixed::min( Fixed& lhs, Fixed& rhs) {
+	if (lhs.getRawBits() < rhs.getRawBits())
+		return (lhs);
+	return (rhs);
+}
 
-// static Fixed&	max( const Fixed& lhs, const Fixed& rhs) {
-// 	Fixed	res = lhs;
-	
-// 	return (res);
-// }
-
-// static Fixed&	min( Fixed& lhs, Fixed& rhs) {
-// 	if (&lhs == &rhs) {
-// 		std::cout << "Comparing same instances" << std::endl;
-// 		return (lhs);
-// 	}
-// 	if (lhs < rhs) {
-// 		return (lhs);
-// 	}
-// 	return (rhs);
-// }
-
-// static Fixed&	min( const Fixed& lhs, const Fixed& rhs) {
-// 	Fixed	res = lhs;
-	
-// 	return (res);
-// }
+Fixed const	Fixed::min( const Fixed& lhs, const Fixed& rhs) {
+	if (lhs.getRawBits() < rhs.getRawBits())
+		return (lhs);
+	return (rhs);
+}
 
 
 int	Fixed::getRawBits( void ) const {

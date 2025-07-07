@@ -16,38 +16,63 @@ int main( void ) {
 
 	Fixed a(5);
 	Fixed b(3);
-	
-	std::cout << a + b << std::endl;
-	if (a != b) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
-	if (a > b) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
-	if (!(a > b)) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
-	if (a <= b) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
-	if (!(a >= b)) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
-	if (!(a == b)) {
-		std::cout << "OK" << std::endl;
-	} else {
-		std::cout << "KO" << std::endl;
-	}
+
+	std::cout << "a = " << a << std::endl;
+	std::cout << "b = " << b << std::endl;
+
+	// std::cout << a + b << std::endl;
+	// std::cout << a - b << std::endl;
+	// std::cout << a * b << std::endl;
+	// std::cout << a / b << std::endl;
+
+	// std::cout << a++ << std::endl;
+	// std::cout << ++a << std::endl;
+	// std::cout << a << std::endl;
+	// std::cout << a-- << std::endl;
+	// std::cout << --a << std::endl;
+	// std::cout << a << std::endl;
+
+	// if (a < b) {
+	// 	std::cout << "a < b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a < b  ==  false" << std::endl;
+	// }
+	// if (a <= b) {
+	// 	std::cout << "a <= b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a <= b  ==  false" << std::endl;
+	// }
+	// if (a > b) {
+	// 	std::cout << "a > b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a > b  ==  false" << std::endl;
+	// }
+	// if (a >= b) {
+	// 	std::cout << "a >= b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a >= b  ==  false" << std::endl;
+	// }
+	// if (a == b) {
+	// 	std::cout << "a == b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a == b  ==  false" << std::endl;
+	// }
+	// if (a != b) {
+	// 	std::cout << "a != b  ==  true" << std::endl;
+	// } else {
+	// 	std::cout << "a != b  ==  false" << std::endl;
+	// }
+
+	std::cout << "Max :" << Fixed::max(a, b) << std::endl;
+	std::cout << "Min :" << Fixed::min(a, b) << std::endl;
+
+	Fixed const c = a;
+	Fixed const d = b;
+
+
+	std::cout << "Max :" << Fixed::max(c, d) << std::endl;
+	std::cout << "Min :" << Fixed::min(c, d) << std::endl;
+
 	// Fixed a;
 	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	
