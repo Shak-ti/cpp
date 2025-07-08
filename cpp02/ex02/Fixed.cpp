@@ -13,26 +13,36 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() : _value(0) {
-	std::cout << "Default constructor called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "Default constructor called" << std::endl;
+	} 
 }
 
 Fixed::Fixed( const Fixed& toCopy ) {
-	std::cout << "Copy constructor called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "Copy constructor called" << std::endl;
+	}
 	*this = toCopy;
 }
 
 Fixed::Fixed( const int nb ) {
 	this->_value = nb * (1 << 8);
-	std::cout << "Int constructor called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "Int constructor called" << std::endl;
+	}
 }
 
 Fixed::Fixed( const float nb ) {
 	this->_value = static_cast<int>(roundf(nb * (1 << 8)));
-	std::cout << "Float constructor called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "Float constructor called" << std::endl;
+	}
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "Destructor called" << std::endl;
+	}
 }
 
 Fixed& Fixed::operator=( const Fixed& rhs ) {
@@ -40,7 +50,9 @@ Fixed& Fixed::operator=( const Fixed& rhs ) {
 		std::cout << "Trying to copy same instance" << std::endl;
 		return *this;
 	}
-	std::cout << "Copy assignment operator called" << std::endl;
+	if(TOGGLE) {
+		std::cout << "Copy assignment operator called" << std::endl;
+	}
 	this->_value = rhs.getRawBits();
 	return (*this);
 }
@@ -103,26 +115,26 @@ Fixed Fixed::operator/( const Fixed& rhs) {
 	return (Fixed((this->toFloat() / rhs.toFloat())));
 }
 
-Fixed Fixed::operator++( int diff ) { //suffixe
-	(void) diff;
+Fixed Fixed::operator++( void ) { //suffixe
 	++(this->_value);
 	return (*this);
 }
 
-Fixed Fixed::operator--( int diff ) {
-	(void) diff;
+Fixed Fixed::operator--( void ) {
 	--(this->_value);
 	return (*this);
 }
 
-Fixed Fixed::operator++( void ) { //préfixe
+Fixed Fixed::operator++( int diff ) { //préfixe
+	(void) diff;
 	Fixed	copy = *this;
 	
 	++(this->_value);
 	return (copy);
 }
 
-Fixed Fixed::operator--( void ) {
+Fixed Fixed::operator--( int diff ) {
+	(void) diff;
 	Fixed	copy = *this;
 	
 	--(this->_value);
@@ -155,7 +167,9 @@ Fixed const	Fixed::min( const Fixed& lhs, const Fixed& rhs) {
 
 
 int	Fixed::getRawBits( void ) const {
-	std::cout << "getRawBits member function called" << std::endl;
+	if (TOGGLE) {
+		std::cout << "getRawBits member function called" << std::endl;
+	}
 	return (this->_value);
 }
 

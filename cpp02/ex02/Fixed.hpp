@@ -16,6 +16,8 @@
 # include <cmath>
 # include <fstream>
 
+# define TOGGLE 0
+
 class Fixed {
 
 	public:

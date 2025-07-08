@@ -20,58 +20,62 @@ int main( void ) {
 	std::cout << "a = " << a << std::endl;
 	std::cout << "b = " << b << std::endl;
 
-	// std::cout << a + b << std::endl;
-	// std::cout << a - b << std::endl;
-	// std::cout << a * b << std::endl;
-	// std::cout << a / b << std::endl;
+	std::cout << "Result a + b : " << a + b << std::endl;
+	std::cout << "Result a - b : " << a - b << std::endl;
+	std::cout << "Result a * b : " << a * b << std::endl;
+	std::cout << "Result a / b : " << a / b << std::endl;
 
-	// std::cout << a++ << std::endl;
-	// std::cout << ++a << std::endl;
-	// std::cout << a << std::endl;
-	// std::cout << a-- << std::endl;
-	// std::cout << --a << std::endl;
-	// std::cout << a << std::endl;
+	std::cout << "Initial value  : " << a << std::endl;
+	std::cout << "Result of ++a  : " << ++a << std::endl;
+	std::cout << "Value of a now : " << a << std::endl;
+	std::cout << "Result of a++  : " << a++ << std::endl;
+	std::cout << "Value of a now : " << a << std::endl;
 
-	// if (a < b) {
-	// 	std::cout << "a < b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a < b  ==  false" << std::endl;
-	// }
-	// if (a <= b) {
-	// 	std::cout << "a <= b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a <= b  ==  false" << std::endl;
-	// }
-	// if (a > b) {
-	// 	std::cout << "a > b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a > b  ==  false" << std::endl;
-	// }
-	// if (a >= b) {
-	// 	std::cout << "a >= b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a >= b  ==  false" << std::endl;
-	// }
-	// if (a == b) {
-	// 	std::cout << "a == b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a == b  ==  false" << std::endl;
-	// }
-	// if (a != b) {
-	// 	std::cout << "a != b  ==  true" << std::endl;
-	// } else {
-	// 	std::cout << "a != b  ==  false" << std::endl;
-	// }
+	std::cout << "Result of --a  : " << --a << std::endl;
+	std::cout << "Value of a now : " << a << std::endl;
+	std::cout << "Result of a--  : " << a-- << std::endl;
+	std::cout << "Value of a now : " << a << std::endl;
 
-	std::cout << "Max :" << Fixed::max(a, b) << std::endl;
-	std::cout << "Min :" << Fixed::min(a, b) << std::endl;
+	if (a < b) {
+		std::cout << "a < b  ==  true" << std::endl;
+	} else {
+		std::cout << "a < b  ==  false" << std::endl;
+	}
+	if (a <= b) {
+		std::cout << "a <= b  ==  true" << std::endl;
+	} else {
+		std::cout << "a <= b  ==  false" << std::endl;
+	}
+	if (a > b) {
+		std::cout << "a > b  ==  true" << std::endl;
+	} else {
+		std::cout << "a > b  ==  false" << std::endl;
+	}
+	if (a >= b) {
+		std::cout << "a >= b  ==  true" << std::endl;
+	} else {
+		std::cout << "a >= b  ==  false" << std::endl;
+	}
+	if (a == b) {
+		std::cout << "a == b  ==  true" << std::endl;
+	} else {
+		std::cout << "a == b  ==  false" << std::endl;
+	}
+	if (a != b) {
+		std::cout << "a != b  ==  true" << std::endl;
+	} else {
+		std::cout << "a != b  ==  false" << std::endl;
+	}
+
+	std::cout << "Max of a and b : " << Fixed::max(a, b) << std::endl;
+	std::cout << "Min of a and b : " << Fixed::min(a, b) << std::endl;
 
 	Fixed const c = a;
 	Fixed const d = b;
 
 
-	std::cout << "Max :" << Fixed::max(c, d) << std::endl;
-	std::cout << "Min :" << Fixed::min(c, d) << std::endl;
+	std::cout << "Max of const a and b : " << Fixed::max(c, d) << std::endl;
+	std::cout << "Min of const a and b : " << Fixed::min(c, d) << std::endl;
 
 	// Fixed a;
 	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
