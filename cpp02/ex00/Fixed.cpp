@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 11:38:00 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/08 13:06:40 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Fixed::Fixed() : _value(0) {
 
 Fixed::Fixed( const Fixed& toCopy ) : _value(0) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = toCopy;
+	*this = toCopy; //utilise la surcharge d'opérateur d'affectation
 }
 
 Fixed::~Fixed() {

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:04:24 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/08 12:41:22 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/08 12:53:52 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ class Point {
 		const Fixed	y;
 };
 
-bool	bsp( Point const a, Point const b, Point const c, Point const point );
+bool			bsp( Point const a, Point const b, Point const c, Point const point );
+std::ostream&	operator<<( std::ostream& os, const Point& point );
 
 #endif
  
