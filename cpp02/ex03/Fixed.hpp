@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:16:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/08 12:24:55 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/11 17:39:04 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <cmath>
 # include <fstream>
 
-# define F_TOGGLE 1
+# define F_TOGGLE 0
 
 class Fixed {
 

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/08 12:24:34 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/11 17:27:26 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Fixed::Fixed() : _value(0) {
 	if (F_TOGGLE) {
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "FIXED: " << "Default constructor called" << std::endl;
 	} 
 }
 
 Fixed::Fixed( const Fixed& toCopy ) {
 	if (F_TOGGLE) {
-		std::cout << "Copy constructor called" << std::endl;
+		std::cout << "FIXED: " << "Copy constructor called" << std::endl;
 	}
 	*this = toCopy;
 }
@@ -28,30 +28,30 @@ Fixed::Fixed( const Fixed& toCopy ) {
 Fixed::Fixed( const int nb ) {
 	this->_value = nb * (1 << 8);
 	if (F_TOGGLE) {
-		std::cout << "Int constructor called" << std::endl;
+		std::cout << "FIXED: " << "Int constructor called" << std::endl;
 	}
 }
 
 Fixed::Fixed( const float nb ) {
 	this->_value = static_cast<int>(roundf(nb * (1 << 8)));
 	if (F_TOGGLE) {
-		std::cout << "Float constructor called" << std::endl;
+		std::cout << "FIXED: " << "Float constructor called" << std::endl;
 	}
 }
 
 Fixed::~Fixed() {
 	if (F_TOGGLE) {
-		std::cout << "Destructor called" << std::endl;
+		std::cout << "FIXED: " << "Destructor called" << std::endl;
 	}
 }
 
 Fixed& Fixed::operator=( const Fixed& rhs ) {
 	if (this == &rhs) {
-		std::cout << "Trying to copy same instance" << std::endl;
+		std::cout << "FIXED: " << "Trying to copy same instance" << std::endl;
 		return *this;
 	}
 	if(F_TOGGLE) {
-		std::cout << "Copy assignment operator called" << std::endl;
+		std::cout << "FIXED: " << "Copy assignment operator called" << std::endl;
 	}
 	this->_value = rhs.getRawBits();
 	return (*this);
@@ -59,42 +59,42 @@ Fixed& Fixed::operator=( const Fixed& rhs ) {
 
 int Fixed::operator>( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value > rhs.getRawBits());
 }
 
 int Fixed::operator<( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value < rhs.getRawBits());
 }
 
 int Fixed::operator>=( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value >= rhs.getRawBits());
 }
 
 int Fixed::operator<=( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value <= rhs.getRawBits());
 }
 
 int Fixed::operator==( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value == rhs.getRawBits());
 }
 
 int Fixed::operator!=( const Fixed& rhs ) const {
 	if (this == &rhs) {
-		std::cout << "Comparing same instance" << std::endl;
+		std::cout << "FIXED: " << "Comparing same instance" << std::endl;
 	}
 	return (this->_value != rhs.getRawBits());
 }
@@ -168,7 +168,7 @@ Fixed const	Fixed::min( const Fixed& lhs, const Fixed& rhs) {
 
 int	Fixed::getRawBits( void ) const {
 	if (F_TOGGLE) {
-		std::cout << "getRawBits member function called" << std::endl;
+		std::cout << "FIXED: " << "getRawBits member function called" << std::endl;
 	}
 	return (this->_value);
 }
