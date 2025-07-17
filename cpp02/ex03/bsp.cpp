@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:10:38 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/11 19:30:22 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/17 20:05:23 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ Fixed	crossProduct( Point const a, Point const b, Point const c ) {
 }
 
 int	orient(Point const a, Point const b, Point const c) {
-	if (crossProduct(a, b, c) > 0)
+	Fixed cp = crossProduct(a, b, c);
+	if (cp > 0)
 		return (1);
-	return (-1);
+	else if (cp < 0)
+		return (-1);
+	return (0);
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const p ) {
@@ -36,5 +39,10 @@ bool	bsp( Point const a, Point const b, Point const c, Point const p ) {
 		std::cout << "not a triangle..." << std::endl;
 		return (false);
 	}
-	return (orient(a, b, p) == orient(b, c, p) && orient(b, c, p) == orient(c, a, p) && orient(a, b, p) != 0);
+	
+	int o1 = orient(a, b, p);
+	int o2 = orient(b, c, p);
+	int o3 = orient(c, a, p);
+	
+	return (o1 >= 0 && o2 >= 0 && o3 >= 0) || (o1 <= 0 && o2 <= 0 && o3 <= 0);
 }
