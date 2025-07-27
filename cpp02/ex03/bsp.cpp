@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:10:38 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/17 20:05:23 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/27 14:26:17 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ bool	bsp( Point const a, Point const b, Point const c, Point const p ) {
 	int o2 = orient(b, c, p);
 	int o3 = orient(c, a, p);
 	
-	return (o1 >= 0 && o2 >= 0 && o3 >= 0) || (o1 <= 0 && o2 <= 0 && o3 <= 0);
+	return (o1 == o2 && o2 == o3 && o1 != 0);
 }

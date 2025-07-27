@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:04:24 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/11 17:39:08 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/07/17 20:15:28 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Point {
 };
 
 bool	bsp( Point const a, Point const b, Point const c, Point const p );
+bool	isTriangle( Point const a, Point const b, Point const c );
 
 #endif
  
