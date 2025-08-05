@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:02 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 12:08:48 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/05 19:10:12 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main( void ) {
 
-	Fixed a(5);
+	Fixed a(5.1f);
 	Fixed b(3);
 
 	std::cout << "a = " << a << std::endl;

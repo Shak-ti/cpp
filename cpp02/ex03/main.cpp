@@ -6,61 +6,47 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:02 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/27 14:14:29 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/05 19:37:16 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include "Point.hpp"
 
-
-void testTriangle(const Point& a, const Point& b, const Point& c, const Point& p) {
-	std::cout << "\nTesting triangle with vertices: \n";
-	std::cout << "  A(" << a.getx() << ", " << a.gety() << "), ";
-	std::cout << "B(" << b.getx() << ", " << b.gety() << "), ";
-	std::cout << "C(" << c.getx() << ", " << c.gety() << ")\n";
-	std::cout << "  Point to test: P(" << p.getx() << ", " << p.gety() << ")\n";
-
-	if (!isTriangle(a, b, c)) {
-		std::cout << "Not a valid triangle!\n";
-		return;
-	}
-
-	if (bsp(a, b, c, p))
-		std::cout << "Point is inside the triangle\n";
+void	printResult(bool bsp)
+{
+	if (bsp)
+		std::cout << "TRUE" << std::endl;
 	else
-		std::cout << "Point is NOT inside the triangle\n";
+		std::cout << "FALSE" << std::endl;
 }
 
 int main( void ) {
-    Point a(0.0f, 0.0f);
-    Point b(1.0f, 0.0f);
-    Point c(0.0f, 1.0f);
+    Point	a(0, 0);
+    Point	b(1, 0);
+    Point	c(0, 1);
+    Point	p1(0.25f, 0.25f);
 
-    Point inside(0.4f, 0.4f);
-    Point outside(1.0f, 1.0f);
-    Point edge(0.5f, 0.0f); // lies on edge AB
-    Point vertex(0.0f, 0.0f); // same as point a
+	std::cout << "Test not triangle" << std::endl;
+	printResult(bsp(a, a, c, p1));
 
-	testTriangle(a, b, c, inside);
-	testTriangle(a, b, c, outside);
-	testTriangle(a, b, c, edge);
-	testTriangle(a, b, c, vertex);
+	std::cout << "Test point in triangle" << std::endl;
+	printResult(bsp(a, b, c, p1));
 
+	std::cout << "Test point not in triangle" << std::endl;
+	Point	p2(1, 1);
+	printResult(bsp(a, b, c, p2));
 
-	// Not a triangle - two identical points
-	Point a2(1.0f, 1.0f);
-	Point b2(1.0f, 1.0f); // same as a2
-	Point c2(0.0f, 0.0f);
-	Point p5(0.5f, 0.5f);
-	testTriangle(a2, b2, c2, p5);
+	std::cout << "Test point on edge" << std::endl;
+	Point	p3(0, 0.5f);
+	printResult(bsp(a, b, c, p3));
 
-	// Not a triangle - all points aligned
-	Point a3(0.0f, 0.0f);
-	Point b3(1.0f, 1.0f);
-	Point c3(2.0f, 2.0f); // aligned with a3 and b3
-	Point p6(1.5f, 1.5f);
-	testTriangle(a3, b3, c3, p6);
+	std::cout << "Test point on vertex" << std::endl;
+	printResult(bsp(a, b, c, c));
 
-    return 0;
+	std::cout << "Test point far away" << std::endl;
+	Point	p4(-354, -1234);
+	printResult(bsp(a, b, c, p4));
+
+	return 0;
 }

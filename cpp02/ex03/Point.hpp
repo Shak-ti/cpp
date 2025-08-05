@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:04:24 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/17 20:15:28 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/05 19:23:18 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class Point {
 
 		int		operator==( const Point& ) const;
 		int		operator!=( const Point& ) const;
+		Point	operator+( const Point& ) const ;
+		Point	operator-( const Point& ) const ;
 
 		Fixed	getx( void ) const;
 		Fixed	gety( void ) const;
