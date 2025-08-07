@@ -3,37 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:15:55 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/30 16:15:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/07 20:20:49 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
-# include "ClapTrap.hpp"
+# include "./ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 
 	public:
 
+		FragTrap( void );
 		FragTrap( std::string name );
 		FragTrap( const FragTrap& toCopy );
-		~FragTrap( void );
+		virtual ~FragTrap( void );
 		FragTrap& operator=( const FragTrap& toCopy );
 
 		void attack( const std::string& target );
-		void takeDamage( unsigned int amount );
-		void beRepaired( unsigned int amount );
-		void highFivesGuys( void );
-
-	private:
-
-		std::string  _name;
-		unsigned int _hitPoints;
-		unsigned int _energyPoints;
-		unsigned int _attackDamage;
+		void highFivesGuys( void ) const;
 };
 
 #endif

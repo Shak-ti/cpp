@@ -6,11 +6,11 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:26:43 by sconiat           #+#    #+#             */
-/*   Updated: 2025/06/28 13:07:33 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/07 13:03:57 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "./ClapTrap.hpp"
 
 int main( void ) {
 	ClapTrap	a("a");
