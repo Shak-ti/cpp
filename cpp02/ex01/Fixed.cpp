@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 13:17:04 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/03 12:04:10 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/07 09:42:21 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ Fixed::Fixed( const Fixed& toCopy ) {
 }
 
 Fixed::Fixed( const int nb ) {
-	this->_value = nb * (1 << 8);
+	this->_value = nb * (1 << _frac);
 	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed( const float nb ) {
-	this->_value = static_cast<int>(roundf(nb * (1 << 8)));
+	this->_value = static_cast<int>(roundf(nb * (1 << _frac)));
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -55,11 +55,11 @@ void	Fixed::setRawBits( int const raw ) {
 }
 
 int	Fixed::toInt( void ) const {
-	return (this->_value / (1 << 8));
+	return (this->_value / (1 << _frac));
 }
 
 float	Fixed::toFloat( void ) const {
-	return (static_cast<float>(this->_value) / (1 << 8));
+	return (static_cast<float>(this->_value) / (1 << _frac));
 }
 
 std::ostream& operator<<( std::ostream& os, const Fixed& nbr ) {
