@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/28 12:26:43 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/08 10:06:33 by sconiat          ###   ########.fr       */
+/*   Created: 2025/06/28 13:09:10 by sconiat           #+#    #+#             */
+/*   Updated: 2025/08/07 20:20:43 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ClapTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
+# include "./ClapTrap.hpp"
 
-int main( void ) {
-	ClapTrap	a("a");
+class ScavTrap : virtual public ClapTrap {
 
-	a.attack("b");
-	a.takeDamage(5);
-	a.beRepaired(4);
-	
-	a.takeDamage(500);
-	a.attack("b");
-	
-	ClapTrap	b;
-	
-	b = a;
-	
-	b.attack("a");
-	b.takeDamage(5);
-	b.beRepaired(4);
+	public:
 
-	ClapTrap	c(a);
+		ScavTrap( void );
+		ScavTrap( std::string name );
+		ScavTrap( const ScavTrap& toCopy );
+		virtual ~ScavTrap( void );
+		ScavTrap& operator=( const ScavTrap& toCopy );
 
-	c.attack("b");
-	c.takeDamage(5);
-	c.beRepaired(4);
+		void attack( const std::string& target );
+		void guardGate( void );
+};
 
-	ClapTrap	d;
-	
-	d.attack("b");
-	d.takeDamage(5);
-	d.beRepaired(4);
-	return 0;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 17:21:02 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/07 20:11:05 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/08 10:16:28 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ DiamondTrap::DiamondTrap(void) : ClapTrap("Default_clap_name"), _name("Default")
 	std::cout << "DiamondTrap " << this->_name << " created." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(_name + "_clap_name"), _name(name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), _name(name) {
 	this->_hitPoints = FragTrap::defaultHitPoint;
 	this->_energyPoints = ScavTrap::defaultEnergyPoint;
 	this->_attackDamage = FragTrap::defaultAttackDamage;

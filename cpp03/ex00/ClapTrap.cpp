@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:26:31 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/07 20:21:29 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/08 10:03:48 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,6 @@ void	ClapTrap::beRepaired( unsigned int amount ) {
 	if ( this->_hitPoints == 0 ) {
 		std::cout << "ClapTrap " << this->_name << " is already dead : can't be repaired!" << std::endl;
 		return ;
-	}
-	while ( this->_hitPoints + amount > 10 ) {
-		amount--;
 	}
 	std::cout << "ClapTrap " << this->_name << " repairs itself regaining " << amount << " hit points!" << std::endl;
 	this->_hitPoints += amount;
