@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 12:38:22 by sconiat           #+#    #+#             */
-/*   Updated: 2025/07/01 12:46:00 by sconiat          ###   ########.fr       */
+/*   Created: 2025/08/10 11:01:54 by sconiat           #+#    #+#             */
+/*   Updated: 2025/08/10 11:04:47 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
+# include <iostream>
+# include "WrongAnimal.hpp"
 
-int main() {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+class	WrongCat : virtual public WrongAnimal {
 	
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	return 0;
-}
+	public :
+
+		WrongCat ( void );
+		WrongCat ( const WrongCat & );
+		virtual ~WrongCat ( void );
+		WrongCat &operator=( const WrongCat & );
+
+		void	makeSound( void );
+};
+
+#endif
