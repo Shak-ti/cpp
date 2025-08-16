@@ -6,11 +6,11 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:38:22 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 15:28:28 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:28:13 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
 #include "../inc/WrongAnimal.hpp"
@@ -18,7 +18,7 @@
 #include "../inc/Brain.hpp"
 
 int main() {
-
+		
 	Cat *cat1 = new Cat();
 	cat1->setIdea(0, "I want fish");
 

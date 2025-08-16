@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 11:01:54 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/10 14:23:48 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:16:59 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class	Cat : virtual public Animal {
+class	Cat : public Animal {
 	
 	public :
 
@@ -26,6 +26,8 @@ class	Cat : virtual public Animal {
 		Cat &operator=( const Cat & );
 
 		virtual void	makeSound( void ) const;
+		std::string		getIdea( size_t ) const;
+		void			setIdea( size_t, std::string );
 	
 	private :
 

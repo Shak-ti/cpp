@@ -6,18 +6,18 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 11:02:57 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 14:21:57 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:15:45 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cat.hpp"
 
-Cat::Cat( void ) : Animal("Cat") {
+Cat::Cat( void ) : AAnimal("Cat") {
 	std::cout << "Cat created" << std::endl;
 	this->_catBrain = new Brain("Cat ideas");
 }
 
-Cat::Cat( const Cat& toCopy ) : Animal(toCopy) {
+Cat::Cat( const Cat& toCopy ) : AAnimal(toCopy) {
 	std::cout << "Cat created by copy" << std::endl;
 	this->_catBrain = new Brain(*toCopy._catBrain);
 }
@@ -30,7 +30,7 @@ Cat::~Cat( void ) {
 Cat&	Cat::operator=( const Cat& toCopy ) {
 	std::cout << "Cat copy operator called" << std::endl;
 	if ( this != &toCopy ) {
-		Animal::operator=(toCopy);
+		AAnimal::operator=(toCopy);
 		delete this->_catBrain;
 		this->_catBrain = new Brain(*toCopy._catBrain);
 	}

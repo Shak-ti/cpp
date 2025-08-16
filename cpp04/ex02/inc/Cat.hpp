@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 13:25:21 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 14:37:09 by sconiat          ###   ########.fr       */
+/*   Created: 2025/08/10 11:01:54 by sconiat           #+#    #+#             */
+/*   Updated: 2025/08/16 15:14:53 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 # include <iostream>
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-# define B_TOGGLE 1
-
-class Brain {
+class	Cat : virtual public AAnimal {
 	
 	public :
 
-		Brain( void );
-		Brain( std::string );
-		Brain( const Brain& );
-		~Brain( void );
-		Brain &operator=( const Brain& );
+		Cat ( void );
+		Cat ( const Cat & );
+		virtual ~Cat ( void );
+		Cat &operator=( const Cat & );
 
-		std::string	getIdea( size_t ) const;
-		void		setIdea( size_t, std::string );
-		void		printIdeas( void ) const;
-		
-	private :
+		virtual void	makeSound( void ) const;
+		std::string		getIdea( size_t ) const;
+		void			setIdea( size_t, std::string );
 	
-		std::string	ideas[100];
+	private :
+
+		Brain	*_catBrain;
 };
 
 #endif

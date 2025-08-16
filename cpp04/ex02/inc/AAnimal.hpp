@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   AAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/10 13:25:21 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 14:37:09 by sconiat          ###   ########.fr       */
+/*   Created: 2025/07/01 12:33:34 by sconiat           #+#    #+#             */
+/*   Updated: 2025/08/16 15:10:07 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 # include <iostream>
 
-# define B_TOGGLE 1
-
-class Brain {
+class	AAnimal {
 	
 	public :
 
-		Brain( void );
-		Brain( std::string );
-		Brain( const Brain& );
-		~Brain( void );
-		Brain &operator=( const Brain& );
+		AAnimal( void );
+		AAnimal( const AAnimal& );
+		AAnimal( const std::string );
+		virtual ~AAnimal( void );
+		AAnimal &operator=( const AAnimal& );
 
-		std::string	getIdea( size_t ) const;
-		void		setIdea( size_t, std::string );
-		void		printIdeas( void ) const;
+		virtual void	makeSound( void ) const = 0;
+		std::string		getType( void ) const;
+		void			setType( const std::string );
 		
-	private :
+	protected :
 	
-		std::string	ideas[100];
+		std::string	type;
 };
 
 #endif
