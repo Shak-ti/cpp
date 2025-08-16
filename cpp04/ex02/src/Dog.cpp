@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 11:30:16 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 16:10:22 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 18:57:39 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Dog&	Dog::operator=( const Dog& toCopy ) {
 }
 
 void	Dog::makeSound( void ) const {
-	std::cout << "Miaou" << std::endl;
+	std::cout << "Ouaf" << std::endl;
 }
 
 void	Dog::setIdea( size_t id, std::string idea ) {

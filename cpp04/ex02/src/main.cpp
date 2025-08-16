@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:38:22 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 16:12:10 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 19:00:00 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,28 @@
 
 int main() {
 
-	const AAnimal* j = new Dog();
-	const AAnimal* i = new Cat();
+	// AAnimal test;
+	
+	AAnimal*	tab[10];
 
-	delete j;
-	delete i;
+	for (size_t i = 0; i < 5; ++i) {
+		tab[i] = new Cat();
+		tab[i]->makeSound();
+	}
+	for (size_t i = 5; i < 10; ++i) {
+		tab[i] = new Dog();
+		tab[i]->makeSound();
+	}
+		
+	for (size_t i = 0; i < 10; ++i)
+		delete tab[i];
 	
 	std::cout << "[Testing Cat]" << std::endl;
 	Cat *cat1 = new Cat();
-	cat1->setIdea(0, "I want fish");
-
-	Cat *cat2 = new Cat(*cat1);
+	
 	std::cout << std::endl << "// Test copy constructor" << std::endl;
+	cat1->setIdea(0, "I want fish");
+	Cat *cat2 = new Cat(*cat1);
 	std::cout << "cat1 idea: " << cat1->getIdea(0) << std::endl;
 	std::cout << "cat2 idea: " << cat2->getIdea(0) << std::endl;
 
@@ -40,38 +50,16 @@ int main() {
 	std::cout << "cat1 idea: " << cat1->getIdea(0) << std::endl;
 	std::cout << "cat2 idea: " << cat2->getIdea(0) << std::endl;
 
-	Cat *cat3;
-	cat3 = cat1;
 	std::cout << std::endl << "// Test copy assignment" << std::endl;
-	std::cout << "cat3 idea after assignment: " << cat3->getIdea(0) << std::endl;
+	Cat cat3;
+	Cat	cat4;
+	
+	cat3.setIdea(0, "I want milk");
+	cat4 = cat3;
+	std::cout << "cat3 idea after assignment: " << cat3.getIdea(0) << std::endl;
 
 	delete cat1;
 	delete cat2;
-
-	std::cout << std::endl << "[Testing Dog]" << std::endl;
-	Dog *Dog1 = new Dog();
-	Dog1->setIdea(0, "I want fish");
-
-	Dog *Dog2 = new Dog(*Dog1);
-	std::cout << std::endl << "// Test copy constructor" << std::endl;
-	std::cout << "Dog1 idea: " << Dog1->getIdea(0) << std::endl;
-	std::cout << "Dog2 idea: " << Dog2->getIdea(0) << std::endl;
-
-	Dog2->setIdea(0, "I want milk");
-
-	std::cout << std::endl << "// After modification:" << std::endl;
-	std::cout << "Dog1 idea: " << Dog1->getIdea(0) << std::endl;
-	std::cout << "Dog2 idea: " << Dog2->getIdea(0) << std::endl;
-
-	Dog *Dog3;
-	Dog3 = Dog1;
-	std::cout << std::endl << "// Test copy assignment" << std::endl;
-	std::cout << "Dog3 idea after assignment: " << Dog3->getIdea(0) << std::endl;
-
-	delete Dog1;
-	delete Dog2;
-
-	// AAnimal	test;
 	
 	return 0;
 }
