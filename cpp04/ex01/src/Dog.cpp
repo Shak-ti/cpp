@@ -6,25 +6,25 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 11:30:16 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 15:02:42 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 16:10:01 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Dog.hpp"
 
 Dog::Dog( void ) : Animal("Dog") {
-	std::cout << "Dog created" << std::endl;
 	this->_dogBrain = new Brain("Dog ideas");
+	std::cout << "Dog created" << std::endl;
 }
 
 Dog::Dog( const Dog& toCopy ) : Animal(toCopy) {
-	std::cout << "Dog created by copy" << std::endl;
 	this->_dogBrain = new Brain(*toCopy._dogBrain);
+	std::cout << "Dog created by copy" << std::endl;
 }
 
 Dog::~Dog( void ) {
-	std::cout << "Dog destroyed" << std::endl;
 	delete this->_dogBrain;
+	std::cout << "Dog destroyed" << std::endl;
 }
 
 Dog&	Dog::operator=( const Dog& toCopy ) {

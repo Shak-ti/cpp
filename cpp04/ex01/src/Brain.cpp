@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 14:07:50 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 13:00:05 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:34:35 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Brain::Brain( std::string idea ) {
 	for (size_t i = 0; i < 100; ++i)
 		this->ideas[i] = idea;	
 	if (B_TOGGLE)
-		std::cout << "Brain created with idea = " << idea << std::endl;
+		std::cout << "Brain created with idea «" << idea << "»" << std::endl;
 }
 
 Brain::Brain( const Brain& ) {
