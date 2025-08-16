@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 10:54:07 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/10 13:02:33 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/16 20:10:57 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ Animal::~Animal( void ) {
 
 Animal&	Animal::operator=( const Animal& toCopy ) {
 	std::cout << "Animal copy operator called" << std::endl;
-	this->type = toCopy.type;
+	if ( this != &toCopy ) {
+		this->type = toCopy.type;
+	}
 	return (*this);
 }
 

@@ -30,12 +30,10 @@ AAnimal::~AAnimal( void ) {
 
 AAnimal&	AAnimal::operator=( const AAnimal& toCopy ) {
 	std::cout << "AAnimal copy operator called" << std::endl;
-	this->type = toCopy.type;
+	if ( this != &toCopy ) {
+		this->type = toCopy.type;
+	}
 	return (*this);
-}
-
-void	AAnimal::makeSound( void ) const {
-	std::cout << "Random AAnimal Noise" << std::endl;
 }
 
 std::string	AAnimal::getType( void ) const {
