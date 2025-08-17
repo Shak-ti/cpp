@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 12:38:22 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 19:00:00 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:33:03 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ int main() {
 	
 	AAnimal*	tab[10];
 
-	for (size_t i = 0; i < 5; ++i) {
+	for (size_t i = 0; i < 5; i++) {
 		tab[i] = new Cat();
 		tab[i]->makeSound();
 	}
-	for (size_t i = 5; i < 10; ++i) {
+	for (size_t i = 5; i < 10; i++) {
 		tab[i] = new Dog();
 		tab[i]->makeSound();
 	}
 		
-	for (size_t i = 0; i < 10; ++i)
+	for (size_t i = 0; i < 10; i++)
 		delete tab[i];
 	
 	std::cout << "[Testing Cat]" << std::endl;

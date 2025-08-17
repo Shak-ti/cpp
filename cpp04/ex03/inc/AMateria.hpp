@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 19:03:53 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 20:36:55 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/17 19:58:32 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define AMATERIA_HPP
 # include <iostream>
 # include "Character.hpp"
+# include "ICharacter.hpp"
 
 class AMateria {
 	

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 19:15:40 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 21:10:22 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/17 19:47:36 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ICHARACTER_HPP
 # include <iostream>
 # include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter {
 

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 20:55:09 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 21:20:13 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/17 19:58:37 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,26 @@ class Character : virtual public ICharacter {
 
 		std::string 	_name;
 		AMateria		*_inventory[4];
-		unsigned int	_inventorySize = 4;
+		unsigned int	_inventorySize;
+		AMateria		*_trash[100];
+		unsigned int	_trashSize;
 
 	public:
 
 		Character( void );
 		Character( const Character& );
 		Character( const std::string& );
-		virtual ~Character( void ) {}
+		virtual ~Character( void );
 		Character& operator=( const Character& );
 		
-		std::string const & getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx);
-		void use(int idx, Character& target);
+		std::string const&	getName() const;
+		AMateria*			getMateria( unsigned int ) const;
+		void				setMateria( AMateria*, unsigned int );
+		void				setToTrash( AMateria* );
+		void				emptyTrash( void );
+		void				equip(AMateria* m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter& target);
 };
 
 #endif

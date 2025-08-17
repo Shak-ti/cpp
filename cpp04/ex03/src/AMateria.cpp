@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 19:11:25 by sconiat           #+#    #+#             */
-/*   Updated: 2025/08/16 20:43:58 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/08/17 20:04:17 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,7 @@ std::string const&	AMateria::getType() const {
 	return (this->_type);
 }
 
+void	AMateria::use( ICharacter& target ) {
+	std::cout << "Using unknown materia on " << target.getName() << std::endl;
+}
 
