@@ -35,8 +35,15 @@ class Bureaucrat
 		void		incrementGrade( void ) ;
 		void		decrementGrade( void ) ;
 
-		std::exception	GradeTooLowException;
-		std::exception	GradeTooHighException;
+		class GradeTooHighException : public std::exception {
+		public:
+			const char* what() const throw();
+   		};
+
+		class GradeTooLowException : public std::exception {
+		public:
+			const char* what() const throw();
+    	};
 };
 
 std::ostream& operator<<( std::ostream&, const Bureaucrat& );

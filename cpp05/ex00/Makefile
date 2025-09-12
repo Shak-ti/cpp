@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-COMP = c++
+COMP = g++
 CFLAG = -Wall -Werror -Wextra -g3 -std=c++98 -MMD
 SRC_DIR = src
 OBJ_DIR = obj

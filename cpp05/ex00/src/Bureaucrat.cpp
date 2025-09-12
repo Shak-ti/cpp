@@ -13,26 +13,26 @@
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150) {
-	std::cout << "Bureaucrat " << *this << " created by default with name " << 
+	std::cout << "Bureaucrat created by default with name " << 
 		this->getName() << " and grade " << this->getGrade() << std::endl;
 };
 
-Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade(150) {
-	std::cout << "Bureaucrat " << *this << " created with name " << 
+Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade(grade) {
+	std::cout << "Bureaucrat created with name " << 
 		this->getName() << " and grade " << this->getGrade() << std::endl;
 };
 
 Bureaucrat::Bureaucrat( const Bureaucrat& toCopy ) : _name(toCopy.getName()), _grade(toCopy.getGrade()) {
-	std::cout << "Bureaucrat " << *this << " created by copy with name " << 
+	std::cout << "Bureaucrat created by copy with name " << 
 		this->getName() << " and grade " << this->getGrade() << std::endl;
 };
 
 Bureaucrat::~Bureaucrat( void ) {
-	std::cout << "Bureaucrat " << *this << " destroyed" << std::endl;
+	std::cout << "Bureaucrat " << this->getName() << " destroyed" << std::endl;
 };
 
 Bureaucrat& Bureaucrat::operator=( const Bureaucrat& toCopy ) {
-	std::cout << "Bureaucrat " << *this << " copy operator called." << std::endl;
+	std::cout << "Bureaucrat copy operator called." << std::endl;
 	if ( this != &toCopy ) {
 		this->setName(toCopy.getName());
 		this->setGrade(toCopy.getGrade());
@@ -57,18 +57,26 @@ void		Bureaucrat::setGrade( int grade ) {
 }
 
 void		Bureaucrat::incrementGrade( void ) {
-	if (this->getGrade() + 1 < 1)
-		throw Bureaucrat::GradeTooHighException;
-	this->setGrade(this->getGrade() + 1);
+	if (this->getGrade() - 1 < 1)
+		throw GradeTooHighException();
+	this->setGrade(this->getGrade() - 1);
 }
 
 void		Bureaucrat::decrementGrade( void ) {
 	if (this->getGrade() + 1 > 150)
-		throw Bureaucrat::GradeTooLowException;
+		throw GradeTooLowException();
 	this->setGrade(this->getGrade() + 1);
 }
 
 std::ostream&	operator<<( std::ostream& os, const Bureaucrat& toPrint ) {
 	os << toPrint.getName() << ", bureaucrat grade " << toPrint.getGrade() << ".";
 	return (os);
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade is too low!";
 }
