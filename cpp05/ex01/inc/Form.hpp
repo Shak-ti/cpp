@@ -16,6 +16,8 @@
 # include <stdexcept>
 # include "./Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
@@ -34,8 +36,9 @@ class Form
 		std::string getName( void ) const;
 		int			getGradeToSign( void ) const;
 		int			getGradeToExecute( void ) const;
-		int			getIsSigned( void ) const;
-		void		beSigned( const Bureaucrat& );
+		bool		getIsSigned( void ) const;
+		void		setIsSigned( bool );
+		void		beSigned( const Bureaucrat & );
 
 		class GradeTooHighException : public std::exception {
 		public:

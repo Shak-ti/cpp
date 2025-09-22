@@ -11,33 +11,37 @@
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
+
 
 int main() {
 	try {
+		Form	TestForm;
+
+		std::cout << TestForm << std::endl;
+
+		Form	LaissezPassezA38("LaissezPassezA38", 42, 42);
+
+		std::cout << LaissezPassezA38 << std::endl;
+
 		Bureaucrat	Paul("Paul", 42);
-		
-		std::cout << Paul << std::endl;
-		Paul.incrementGrade();
-		std::cout << Paul << std::endl;
-		Paul.decrementGrade();
-		std::cout << Paul << std::endl;
-
 		Bureaucrat	God("God", 0);
-
-		std::cout << God << std::endl;
-		God.incrementGrade();
-		std::cout << God << std::endl;
-
 		Bureaucrat	Flea("Flea", 150);
-
-		std::cout << Flea << std::endl;
-		Flea.decrementGrade();
-		std::cout << Flea << std::endl;		
+	
+		Paul.signForm(LaissezPassezA38);
+		God.signForm(LaissezPassezA38);
+		Flea.signForm(LaissezPassezA38);
 	}
 	catch (Bureaucrat::GradeTooHighException& except) {
 		std::cout << except.what() << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException& except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (Form::GradeTooHighException& except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (Form::GradeTooLowException& except) {
 		std::cout << except.what() << std::endl;
 	}
 	return (0);

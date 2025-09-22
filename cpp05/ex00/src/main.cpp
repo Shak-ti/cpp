@@ -14,6 +14,10 @@
 
 int main() {
 	try {
+		Bureaucrat	Test();
+
+		std::cout << Test << std::endl;
+
 		Bureaucrat	Paul("Paul", 42);
 		
 		std::cout << Paul << std::endl;

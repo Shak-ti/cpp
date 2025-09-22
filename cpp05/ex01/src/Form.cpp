@@ -49,8 +49,7 @@ Form::~Form( void ) {
 Form& Form::operator=( const Form& toCopy ) {
 	std::cout << "Form copy operator called." << std::endl;
 	if ( this != &toCopy ) {
-		this->setName(toCopy.getName());
-		this->setGrade(toCopy.getGrade());
+		setIsSigned(toCopy.getIsSigned());
 	}
 	return (*this);
 }
@@ -59,39 +58,44 @@ std::string Form::getName( void ) const {
 	return (this->_name);
 }
 
-void		Form::setName( std::string name ) {
-	this->_name = name;
+int	Form::getGradeToSign( void ) const {
+	return (_gradeToSign);
 }
 
-int			Form::getGrade( void ) const {
-	return (this->_grade);
+int	Form::getGradeToExecute( void ) const {
+	return (_gradeToExecute);
 }
 
-void		Form::setGrade( int grade ) {
-	this->_grade = grade;
+bool	Form::getIsSigned( void ) const {
+	return (_isSigned);
 }
 
-void		Form::incrementGrade( void ) {
-	if (this->getGrade() - 1 < 1)
-		throw GradeTooHighException();
-	this->setGrade(this->getGrade() - 1);
+void	Form::setIsSigned( bool value ) {
+	this->_isSigned = value;
 }
 
-void		Form::decrementGrade( void ) {
-	if (this->getGrade() + 1 > 150)
+void	Form::beSigned( const Bureaucrat& someone ) {
+	if (someone.getGrade() <= this->getGradeToSign()) {
+		this->setIsSigned(true);
+		std::cout << this << " was signed by " <<
+			someone.getName() << std::endl;
+	}
+	else
 		throw GradeTooLowException();
-	this->setGrade(this->getGrade() + 1);
 }
 
 std::ostream&	operator<<( std::ostream& os, const Form& toPrint ) {
-	os << toPrint.getName() << ", Form grade " << toPrint.getGrade() << ".";
+	os << "Form " << toPrint.getName() << 
+	".(gradeToSign : " << toPrint.getGradeToSign() <<
+	", gradeToExecute : " << toPrint.getGradeToExecute() <<
+	"status : " << toPrint.getIsSigned() << ")";
 	return (os);
 }
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return "Grade is too high!";
+	return "Form : Grade is too high!";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "Grade is too low!";
+	return "Form : Grade is too low!";
 }

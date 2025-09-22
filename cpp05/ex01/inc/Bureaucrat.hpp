@@ -16,6 +16,8 @@
 # include <stdexcept>
 # include "./Form.hpp"
 
+class Form;
+
 class Bureaucrat
 {
 	private:
@@ -35,7 +37,7 @@ class Bureaucrat
 		void		setGrade( int ) ;
 		void		incrementGrade( void ) ;
 		void		decrementGrade( void ) ;
-		void		signForm( const Form& ) const ;
+		void		signForm( Form& );
 
 		class GradeTooHighException : public std::exception {
 		public:
