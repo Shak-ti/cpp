@@ -11,17 +11,17 @@
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 
 int main() {
 	try {
 		std::cout << "CREATING FORMS" << std::endl << std::endl;
-		Form	TestForm;
+		AForm	TestAForm;
 
-		std::cout << TestForm << std::endl;
+		std::cout << TestAForm << std::endl;
 
-		Form	LaissezPassezA38("LaissezPassezA38", 42, 42);
+		AForm	LaissezPassezA38("LaissezPassezA38", 42, 42);
 
 		std::cout << LaissezPassezA38 << std::endl;
 
@@ -45,10 +45,10 @@ int main() {
 	catch (Bureaucrat::GradeTooLowException& except) {
 		std::cout << except.what() << std::endl;
 	}
-	catch (Form::GradeTooHighException& except) {
+	catch (AForm::GradeTooHighException& except) {
 		std::cout << except.what() << std::endl;
 	}
-	catch (Form::GradeTooLowException& except) {
+	catch (AForm::GradeTooLowException& except) {
 		std::cout << except.what() << std::endl;
 	}
 	return (0);
