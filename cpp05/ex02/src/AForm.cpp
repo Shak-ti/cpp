@@ -16,17 +16,31 @@ AForm::AForm(void) :
 	_name("Default"),
 	_gradeToSign(150),
 	_gradeToExecute(150),
-	_isSigned(false) {
+	_isSigned(false),
+	_target("") {
 	std::cout << "AForm created by default with name " << 
 	this->getName() << " (gradeToSign : " << this->getGradeToSign() <<
-	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;
+	", gradeToExecute : " << this->getGradeToExecute() <<
+	", target :" << this->getTarget() << ")" << std::endl;
 };
 
 AForm::AForm( std::string name, int sign, int execute ) :
 	_name(name),
 	_gradeToSign(sign),
 	_gradeToExecute(execute),
-	_isSigned(false) {
+	_isSigned(false),
+	_target("") {
+	std::cout << "AForm created with name " << this->getName() <<
+	" (gradeToSign : " << this->getGradeToSign() <<
+	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;
+};
+
+AForm::AForm( std::string name, int sign, int execute, std::string target ) :
+	_name(name),
+	_gradeToSign(sign),
+	_gradeToExecute(execute),
+	_isSigned(false),
+	_target(target) {
 	std::cout << "AForm created with name " << this->getName() <<
 	" (gradeToSign : " << this->getGradeToSign() <<
 	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;
@@ -59,15 +73,15 @@ std::string AForm::getName( void ) const {
 }
 
 int	AForm::getGradeToSign( void ) const {
-	return (_gradeToSign);
+	return (this->_gradeToSign);
 }
 
 int	AForm::getGradeToExecute( void ) const {
-	return (_gradeToExecute);
+	return (this->_gradeToExecute);
 }
 
 bool	AForm::getIsSigned( void ) const {
-	return (_isSigned);
+	return (this->_isSigned);
 }
 
 void	AForm::setIsSigned( bool value ) {
@@ -84,11 +98,15 @@ void	AForm::beSigned( const Bureaucrat& someone ) {
 		throw GradeTooLowException();
 }
 
+std::string		AForm::getTarget( void ) const {
+	return (this->_target);
+}
+
 std::ostream&	operator<<( std::ostream& os, const AForm& toPrint ) {
 	os << "AForm " << toPrint.getName() << 
 	" (gradeToSign : " << toPrint.getGradeToSign() <<
 	", gradeToExecute : " << toPrint.getGradeToExecute() <<
-	" status : " << toPrint.getIsSigned() << ")";
+	", status : " << toPrint.getIsSigned() << ")";
 	return (os);
 }
 
