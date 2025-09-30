@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:02:15 by sconiat           #+#    #+#             */
-/*   Updated: 2025/09/29 23:13:55 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:07:57 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 			<< " because grade of executor too low." << std::endl;
 	} else {
 		std::ofstream	file;
-		std::string		fileName = "../" + this->getTarget() + "_shrubbery";
+		std::string		fileName = this->getTarget() + "_shrubbery";
 
 		file.open(fileName.c_str());
 		if ( !file.is_open() ) {
@@ -43,5 +43,6 @@ void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const {
 			"_- -   | | _- _" << std::endl <<
 			"  _ -  | |   -_" << std::endl <<
 			"      // \\\\" << std::endl;
+		file.close();
 	}
 }

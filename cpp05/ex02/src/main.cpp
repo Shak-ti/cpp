@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/29 23:05:29 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:08:41 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int main() {
 
 		std::cout << std::endl << "CREATING BUREAUCRATS" << std::endl << std::endl;
 
-		Bureaucrat	Paul("Paul", 150);
+		Bureaucrat	Paul("Paul", 1);
 //		Bureaucrat	God("God", 0);
-		Bureaucrat	Flea("Flea", 150);
+//		Bureaucrat	Flea("Flea", 150);
 	
 		std::cout << std::endl << "TRYING TO SIGN FORMS" << std::endl << std::endl;
 
@@ -55,11 +55,11 @@ int main() {
 //		Prez.execute(Flea);
 
 //		Shrub.execute(God);
-		Robot.execute(Paul);
-//		Prez.execute(Flea);
+//		Robot.execute(Paul);
+		Prez.execute(Paul);
 
-//		Shrub.execute(God);
-		Robot.execute(Paul);
+		Shrub.execute(Paul);
+//		Robot.execute(Paul);
 //		Prez.execute(Flea);
 		
 		std::cout << std::endl << "END" << std::endl << std::endl;
