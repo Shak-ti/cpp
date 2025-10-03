@@ -102,6 +102,20 @@ std::string		AForm::getTarget( void ) const {
 	return (this->_target);
 }
 
+void	AForm::execute( Bureaucrat const & executor ) const {
+	if ( this->getTarget().empty() ) {
+		std::cout << "No target" << std::endl;
+	} else if ( this->getIsSigned() == false ) {
+		std::cout << "Can't execute form " << this->getName()
+			<< " because it is not signed." << std::endl;
+	} else if ( executor.getGrade() > this->getGradeToExecute() ) {
+		std::cout << "Can't execute form " << this->getName()
+			<< " because grade of executor too low." << std::endl;
+	} else {
+		this->action();
+	}
+}
+
 std::ostream&	operator<<( std::ostream& os, const AForm& toPrint ) {
 	os << "AForm " << toPrint.getName() << 
 	" (gradeToSign : " << toPrint.getGradeToSign() <<

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 16:29:46 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/12 16:29:46 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/29 21:33:45 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ std::string Form::getName( void ) const {
 }
 
 int	Form::getGradeToSign( void ) const {
-	return (_gradeToSign);
+	return (this->_gradeToSign);
 }
 
 int	Form::getGradeToExecute( void ) const {
-	return (_gradeToExecute);
+	return (this->_gradeToExecute);
 }
 
 bool	Form::getIsSigned( void ) const {
-	return (_isSigned);
+	return (this->_isSigned);
 }
 
 void	Form::setIsSigned( bool value ) {

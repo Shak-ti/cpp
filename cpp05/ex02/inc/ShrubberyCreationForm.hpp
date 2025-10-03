@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 22:01:16 by sconiat           #+#    #+#             */
-/*   Updated: 2025/09/29 22:01:44 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/03 15:31:55 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ShrubberyCreationForm : virtual public AForm
 	public:
 		ShrubberyCreationForm( std::string );
 
-		virtual void	execute( Bureaucrat const & ) const;
+		virtual void	action( void ) const;
 };
 
 #endif

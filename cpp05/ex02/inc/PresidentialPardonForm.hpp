@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 11:43:21 by sconiat           #+#    #+#             */
-/*   Updated: 2025/09/29 21:37:58 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/03 15:31:45 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PresidentialPardonForm : virtual public AForm
 	public:
 		PresidentialPardonForm( std::string );
 
-		virtual void	execute( Bureaucrat const & ) const;
+		virtual void	action( void ) const;
 };
 
 #endif

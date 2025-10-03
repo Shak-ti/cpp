@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/30 17:08:41 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/03 15:45:29 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int main() {
 	try {
 		std::cout << "CREATING FORMS" << std::endl << std::endl;
 		
-		ShrubberyCreationForm	Shrub("shrub");
-		RobotomyRequestForm		Robot("robot");
-		PresidentialPardonForm	Prez("prez");
+		ShrubberyCreationForm	Shrub("shrubTarget");
+		RobotomyRequestForm		Robot("robotTarget");
+		PresidentialPardonForm	Prez("prezTarget");
 
 		std::cout << Shrub << std::endl;
 		std::cout << Robot << std::endl;
@@ -31,36 +31,48 @@ int main() {
 		std::cout << std::endl << "CREATING BUREAUCRATS" << std::endl << std::endl;
 
 		Bureaucrat	Paul("Paul", 1);
-//		Bureaucrat	God("God", 0);
-//		Bureaucrat	Flea("Flea", 150);
-	
+		Bureaucrat	God("God", 0);
+		Bureaucrat	Flea("Flea", 150);
+
 		std::cout << std::endl << "TRYING TO SIGN FORMS" << std::endl << std::endl;
+		
+		std::cout << std::endl << "TRYING HIGH PERMISSIONS" << std::endl << std::endl;
+
+		God.signForm(Shrub);
+		God.signForm(Robot);
+		God.signForm(Prez);
+
+		std::cout << std::endl << "TRYING NORMAL PERMISSIONS" << std::endl << std::endl;
 
 		Paul.signForm(Shrub);
-//		God.signForm(Shrub);
-//		Flea.signForm(Shrub);
-
 		Paul.signForm(Robot);
-//		God.signForm(Robot);
-//		Flea.signForm(Robot);
-
 		Paul.signForm(Prez);
-//		God.signForm(Prez);
-//		Flea.signForm(Prez);
+
+		std::cout << std::endl << "TRYING LOW PERMISSIONS" << std::endl << std::endl;
+		
+		Flea.signForm(Shrub);
+		Flea.signForm(Robot);
+		Flea.signForm(Prez);
 
 		std::cout << std::endl << "TRYING TO EXECUTE FORMS" << std::endl << std::endl;
 
-//		Shrub.execute(God);
-		Robot.execute(Paul);
-//		Prez.execute(Flea);
+		std::cout << std::endl << "TRYING HIGH PERMISSIONS" << std::endl << std::endl;
+		
+		Shrub.execute(God);
+		Robot.execute(God);
+		Prez.execute(God);
 
-//		Shrub.execute(God);
-//		Robot.execute(Paul);
-		Prez.execute(Paul);
+		std::cout << std::endl << "TRYING NORMAL PERMISSIONS" << std::endl << std::endl;
 
 		Shrub.execute(Paul);
-//		Robot.execute(Paul);
-//		Prez.execute(Flea);
+		Robot.execute(Paul);
+		Prez.execute(Paul);
+
+		std::cout << std::endl << "TRYING LOW PERMISSIONS" << std::endl << std::endl;
+		
+		Shrub.execute(Paul);
+		Robot.execute(Paul);
+		Prez.execute(Flea);
 		
 		std::cout << std::endl << "END" << std::endl << std::endl;
 	}
