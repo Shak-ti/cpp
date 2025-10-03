@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:24 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/03 17:45:35 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150) {
 };
 
 Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade(grade) {
+	if (grade < 1)
+		throw GradeTooHighException();
+	if (grade > 150)
+		throw GradeTooLowException();
 	std::cout << "Bureaucrat created with name " << 
 		this->getName() << " and grade " << this->getGrade() << std::endl;
 };
@@ -60,12 +64,14 @@ void		Bureaucrat::incrementGrade( void ) {
 	if (this->getGrade() - 1 < 1)
 		throw GradeTooHighException();
 	this->setGrade(this->getGrade() - 1);
+	std::cout << this->getName() << " grade incremented" << std::endl;
 }
 
 void		Bureaucrat::decrementGrade( void ) {
 	if (this->getGrade() + 1 > 150)
 		throw GradeTooLowException();
 	this->setGrade(this->getGrade() + 1);
+	std::cout << this->getName() << " grade decremented" << std::endl;
 }
 
 std::ostream&	operator<<( std::ostream& os, const Bureaucrat& toPrint ) {

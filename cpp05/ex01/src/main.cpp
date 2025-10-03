@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/10/03 17:37:46 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main() {
 		std::cout << std::endl << "CREATING BUREAUCRATS" << std::endl << std::endl;
 
 		Bureaucrat	Paul("Paul", 42);
-		Bureaucrat	God("God", 0);
+		Bureaucrat	God("God", 1);
 		Bureaucrat	Flea("Flea", 150);
 	
 		std::cout << std::endl << "TRYING TO SIGN FORMS" << std::endl << std::endl;
