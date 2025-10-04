@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:48:09 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/03 17:06:25 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:44:54 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ AForm*	Intern::makeForm( std::string name, std::string target) const {
 			return ((this->*fonctions[i])(target));
 		}
 	}
-	throw NameDoesNotExist();
+	throw NameDoesNotExistException();
 }
 
-const char* Intern::NameDoesNotExist::what( void ) const throw() {
-	return "Bureaucrat : Grade is too high!";
+const char* Intern::NameDoesNotExistException::what( void ) const throw() {
+	return "Intern : Name of Form not repertoried!";
 }

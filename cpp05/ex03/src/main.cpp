@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/10/03 18:10:38 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:48:25 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ int main() {
 		AForm	*Prez = Tom.makeForm("presidential pardon", "prezTarget");
 		AForm	*Shrub = Tom.makeForm("robotomy request", "robotTarget");
 		AForm	*Robot = Tom.makeForm("shrubbery creation", "shrubTarget");
+		AForm	*Wrong = Tom.makeForm("wrong name", "wrongTarget");
 		
 		std::cout << std::endl << "PRINTING FORMS" << std::endl << std::endl;		
 
 		std::cout << *Shrub << std::endl;
 		std::cout << *Robot << std::endl;
 		std::cout << *Prez << std::endl;
-
+		std::cout << *Wrong << std::endl;
+		
 		std::cout << std::endl << "CREATING BUREAUCRAT" << std::endl << std::endl;
 
 		Bureaucrat	God("God", 1);
@@ -52,6 +54,9 @@ int main() {
 		Prez->execute(God);
 		
 		std::cout << std::endl << "END" << std::endl << std::endl;
+		delete	Prez;
+		delete	Shrub;
+		delete	Robot;
 	}
 	catch (Bureaucrat::GradeTooHighException& except) {
 		std::cout << except.what() << std::endl;
@@ -63,6 +68,9 @@ int main() {
 		std::cout << except.what() << std::endl;
 	}
 	catch (AForm::GradeTooLowException& except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (Intern::NameDoesNotExistException& except) {
 		std::cout << except.what() << std::endl;
 	}
 	return (0);

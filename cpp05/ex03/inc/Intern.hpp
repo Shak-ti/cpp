@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 15:48:00 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/03 16:53:47 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/04 11:41:18 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Intern {
 		AForm*	makeShrubberyCreation( std::string )const ;
 		AForm*	makeForm( std::string, std::string ) const;
 
-		class NameDoesNotExist : public std::exception {
+		class NameDoesNotExistException : public std::exception {
 			public:
 				const char* what( void ) const throw();
    		};
