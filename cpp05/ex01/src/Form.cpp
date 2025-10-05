@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 16:29:46 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/29 21:33:45 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/05 17:19:31 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ Form::Form( std::string name, int sign, int execute ) :
 	_gradeToSign(sign),
 	_gradeToExecute(execute),
 	_isSigned(false) {
+	if (sign < 1 || execute < 1)
+		throw GradeTooHighException();
+	if (sign > 150 || execute > 150)
+		throw GradeTooLowException();
 	std::cout << "Form created with name " << this->getName() <<
 	" (gradeToSign : " << this->getGradeToSign() <<
 	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;

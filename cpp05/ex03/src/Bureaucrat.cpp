@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:24 by marvin            #+#    #+#             */
-/*   Updated: 2025/10/03 17:56:34 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/05 18:34:55 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,22 @@ void	Bureaucrat::signForm( AForm& toSign ) {
 	catch (AForm::GradeTooLowException & exept) {
 		std::cout << this->getName() << " couldn't sign " << toSign.getName() <<
 		" because the grade needed to sign the form is higher." << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm( const AForm& form ) const {
+	try {
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;	
+	}
+	catch (AForm::GradeTooLowException& except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (AForm::NoTargetException& except) {
+		std::cout << except.what() << std::endl;
+	}
+	catch (AForm::FormNotSignedException& except) {
+		std::cout << except.what() << std::endl;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 14:40:38 by marvin            #+#    #+#             */
-/*   Updated: 2025/10/05 16:57:41 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/05 19:30:06 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,62 +18,87 @@
 #include "../inc/Intern.hpp"
 
 int main() {
-	std::cout << "CREATING INTERN" << std::endl << std::endl;
+	std::cout << std::endl << "TESTS FORMS" << std::endl << std::endl;
 
-	Intern	Tom;
+	Intern	Bidule;
 
-	AForm	*Prez = NULL;
-	AForm	*Shrub = NULL;
-	AForm	*Robot = NULL;
-	AForm	*Wrong = NULL;
-	
-	try {
-		std::cout << std::endl << "CREATING FORMS WITH INTERN" << std::endl << std::endl;
+	{
+		std::cout << std::endl << "	CREATING UNKNOWN FORM WITH INTERN" << std::endl << std::endl;
+
+		try {
+			Bidule.makeForm("unknown name", "target");
+		}
+		catch (Intern::NameDoesNotExistException& except) {
+			std::cout << except.what() << std::endl;
+		}
+	}
+
+	{
+		std::cout << std::endl << "	CREATING FORMS WITH INTERN" << std::endl << std::endl;
+
+		AForm*	Shrub = NULL;
+		AForm*	Robot = NULL;
+		AForm*	Prez = NULL;
+
+		Shrub = Bidule.makeForm("shrubbery creation", "shrubTarget");
+		Robot = Bidule.makeForm("robotomy request", "robotTarget");
+		Prez = Bidule.makeForm("presidential pardon", "prezTarget");
 		
-		Prez = Tom.makeForm("presidential pardon", "prezTarget");
-		Shrub = Tom.makeForm("robotomy request", "robotTarget");
-		Robot = Tom.makeForm("shrubbery creation", "shrubTarget");
-		Wrong = Tom.makeForm("wrong name", "wrongTarget");
-	}
-	catch (Intern::NameDoesNotExistException& except) {
-		std::cout << except.what() << std::endl;
-	}
-	std::cout << std::endl << "PRINTING FORMS" << std::endl << std::endl;		
+		std::cout << std::endl << "	PRINTING FORMS" << std::endl << std::endl;
+		
+		std::cout << *Shrub << std::endl;
+		std::cout << *Robot << std::endl;
+		std::cout << *Prez << std::endl;
+		
+		std::cout << std::endl << "	CREATING BUREAUCRATS" << std::endl << std::endl;
 
-	std::cout << *Shrub << std::endl;
-	std::cout << *Robot << std::endl;
-	std::cout << *Prez << std::endl;
-	if (Wrong) std::cout << *Wrong << std::endl;
-	
-	std::cout << std::endl << "CREATING BUREAUCRAT" << std::endl << std::endl;
+		Bureaucrat	God("God",1);
+		Bureaucrat	Flea("Flea",150);
+		
+		std::cout << std::endl << "	TRYING TO EXECUTE FORMS NOT SIGNED" << std::endl << std::endl;
+		{
+			God.executeForm(*Shrub);
+			God.executeForm(*Robot);
+			God.executeForm(*Prez);
+		}
 
-	Bureaucrat*	God = NULL;
-	try {
-		God = new Bureaucrat("God", 1);
-	}
-	catch (Bureaucrat::GradeTooHighException& except) {
-		std::cout << except.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException& except) {
-		std::cout << except.what() << std::endl;
-	}
-	std::cout << std::endl << "TRYING TO SIGN FORMS" << std::endl << std::endl;
-	
-	if (God) God->signForm(*Shrub);
-	if (God) God->signForm(*Robot);
-	if (God) God->signForm(*Prez);
+		std::cout << std::endl << "	TRYING TO SIGN WITH LOW PERMISSIONS" << std::endl << std::endl;
+		{
+			Flea.signForm(*Shrub);
+			Flea.signForm(*Robot);
+			Flea.signForm(*Prez);
+		}
+		
+		std::cout << std::endl << "	SIGNING FORMS" << std::endl << std::endl;
+		God.signForm(*Shrub);
+		God.signForm(*Robot);
+		God.signForm(*Prez);
+		
+		std::cout << std::endl << "	TRYING TO EXECUTE WITH LOW PERMISSIONS" << std::endl << std::endl;
+		{
+			Flea.executeForm(*Shrub);
+			Flea.executeForm(*Robot);
+			Flea.executeForm(*Prez);
+		}
+		
+		std::cout << std::endl << "	TRYING TO EXECUTE WITH EMPTY TARGET" << std::endl << std::endl;
+		{
+			ShrubberyCreationForm	TestNoTarget("");
+			God.signForm(TestNoTarget);
+			God.executeForm(TestNoTarget);
+		}
+		
+		std::cout << std::endl << "	EXECUTING FORMS" << std::endl << std::endl;
+		God.executeForm(*Shrub);
+		God.executeForm(*Robot);
+		God.executeForm(*Prez);
+		
+		std::cout << std::endl << "END" << std::endl << std::endl;
 
-	std::cout << std::endl << "TRYING TO EXECUTE FORMS" << std::endl << std::endl;
-	
-	if (God) Shrub->execute(*God);
-	if (God) Robot->execute(*God);
-	if (God) Prez->execute(*God);
-	
-	std::cout << std::endl << "END" << std::endl << std::endl;
-	delete	Prez;
-	delete	Shrub;
-	delete	Robot;
-	delete	Wrong;
-	delete	God;
+		delete	Shrub;
+		delete	Prez;
+		delete	Robot;
+	}
+
 	return (0);
 }

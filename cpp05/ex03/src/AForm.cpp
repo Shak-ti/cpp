@@ -30,6 +30,10 @@ AForm::AForm( std::string name, int sign, int execute ) :
 	_gradeToExecute(execute),
 	_isSigned(false),
 	_target("") {
+	if (sign < 1 || execute < 1)
+		throw GradeTooHighException();
+	if (sign > 150 || execute > 150)
+		throw GradeTooLowException();
 	std::cout << "AForm created with name " << this->getName() <<
 	" (gradeToSign : " << this->getGradeToSign() <<
 	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;
@@ -41,6 +45,10 @@ AForm::AForm( std::string name, int sign, int execute, std::string target ) :
 	_gradeToExecute(execute),
 	_isSigned(false),
 	_target(target) {
+	if (sign < 1 || execute < 1)
+		throw GradeTooHighException();
+	if (sign > 150 || execute > 150)
+		throw GradeTooLowException();
 	std::cout << "AForm created with name " << this->getName() <<
 	" (gradeToSign : " << this->getGradeToSign() <<
 	", gradeToExecute : " << this->getGradeToExecute() << ")" << std::endl;
@@ -104,13 +112,11 @@ std::string		AForm::getTarget( void ) const {
 
 void	AForm::execute( Bureaucrat const & executor ) const {
 	if ( this->getTarget().empty() ) {
-		std::cout << "No target" << std::endl;
+		throw NoTargetException();
 	} else if ( this->getIsSigned() == false ) {
-		std::cout << "Can't execute form " << this->getName()
-			<< " because it is not signed." << std::endl;
+		throw FormNotSignedException();
 	} else if ( executor.getGrade() > this->getGradeToExecute() ) {
-		std::cout << "Can't execute form " << this->getName()
-			<< " because grade of executor too low." << std::endl;
+		throw GradeTooLowException();
 	} else {
 		this->action();
 	}
@@ -130,4 +136,12 @@ const char* AForm::GradeTooHighException::what() const throw() {
 
 const char* AForm::GradeTooLowException::what() const throw() {
 	return "AForm : Grade is too low!";
+}
+
+const char* AForm::NoTargetException::what() const throw() {
+	return "AForm : No target!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "AForm : Form not signed!";
 }
