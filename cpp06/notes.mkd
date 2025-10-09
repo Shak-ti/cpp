@@ -1,0 +1,16 @@
+Hiérarchie entre les types
+promotion : passer à une adresse moins précise
+démotion : passer à une adresse plus précise *dangereux* -> cast explicite
+
+
+int	a;
+
+double b = a *Conversion implicite*
+double b = (double) a *Conversion explicite*
+
+Cast  identitaire : Réinterpretation (pas de mouvement de bits)
+void * = adresse sur n'importe quel type, moins précise que les autres adresses, plus générale
+
+Cast de type qualifier : const ou volatile
+Hiérarchie : cons est plus générale, sans est plus précise
+donc démotion = passer de const à sans const
