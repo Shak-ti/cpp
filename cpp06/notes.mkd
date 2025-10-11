@@ -1,12 +1,12 @@
 Hiérarchie entre les types
-promotion : passer à une adresse moins précise
-démotion : passer à une adresse plus précise *dangereux* -> cast explicite
+(downcast) promotion : passer à une adresse moins précise
+(upcast) démotion : passer à une adresse plus précise *dangereux* -> cast explicite
 
 
 int	a;
 
 double b = a *Conversion implicite*
-double b = (double) a *Conversion explicite*
+double b = (double) a *Conversion explicite* à utiliser pour être sûr de n'avoir pas fait d'erreur
 
 Cast  identitaire : Réinterpretation (pas de mouvement de bits)
 void * = adresse sur n'importe quel type, moins précise que les autres adresses, plus générale
@@ -14,3 +14,83 @@ void * = adresse sur n'importe quel type, moins précise que les autres adresses
 Cast de type qualifier : const ou volatile
 Hiérarchie : cons est plus générale, sans est plus précise
 donc démotion = passer de const à sans const
+
+Classes : parent plus générique qu'enfant et enfants entre eux = downcast
+
+
+Static cast :
+	double	b;
+	int		a = static_cast<int>(b);			-> Explicit demotion
+
+	class	Parent	{};
+	class	Child: public Parent	{};
+
+	Parent*		d;
+	Child*		c = static_cast<Child*>(d);		-> Explicit demotion
+	Unrelated*	e = static_cast<Unrelated*>(d);	-> Ne compile pas
+
+le static cast est le seul à avoir lieu au runtime et pas à la compilation, pas comme le dynamic cast
+
+Dynamic cast : que dans le cas d'une instance polymorphique (au moins une méthode virtuelle)
+
+	class	Parent	{ public: virtual ~Parent( void ) {} }
+	class	Child: public Parent	{};
+
+	Chils	a;
+	Parent*	b = &a			-> implicit cast ok
+
+	//Par pointeur
+	Child*	c = dynamic_cast<CHild*>(b);
+	if (c == NULL)			-> raté
+	else -> ok
+
+	//Par référence
+	try {
+		Child&	c = dynamic_cast<CHild&>(*b);
+	}
+	catch (std::bad_cast &bc) {
+		std::cout << bc.what()
+	}
+
+Reinterpret cast:
+	float	a = 420.042;
+
+	void*	b = &a;							-> Promotion implicite ok
+	int*	c = reinterpret_cast<int *>(b)	->Démotion explicite ok
+	int&	d = reinterpret_cast<int &>(b)	->Démotion explicite ok
+
+	utile pour les retypage
+
+Const cast: pour passer les qualifieurs de type (pas ouf)
+	int	a = 42;
+
+	int const*	b = &a;						-> Promotion implicite ok
+	int*		c = b;						-> Démotion implicite ne compile pas
+	int*		d = const_cast<int*>(b);	-> Démotion explicite ok
+
+Operateurs de cast:
+	class	Foo {
+		public:
+		Foo( float const v ) : _v( v ) {}
+
+		operator float() {return this->_v}
+		operator int() {return static_cast<int>(this->_v)}
+	}
+	Foo		a(420.042);
+	float	b = a;
+	int		c = a;
+
+Explicit keyword:
+	Constructeur de classe similaire à opération de cast
+	Class A {};
+	Class B {};
+	Class C {
+		public:
+						C( A const & ) {}
+			explicit	C( B const & ) {} -> Interdit la construction implicite de l'instance
+	};
+
+	void	f( C const & ) { return }
+
+	f(A());		-> Implicite conversion ok
+	f(B())		-> not ok
