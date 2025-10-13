@@ -32,7 +32,7 @@ Static cast :
 le static cast est le seul à avoir lieu au runtime et pas à la compilation, pas comme le dynamic cast
 
 Dynamic cast : que dans le cas d'une instance polymorphique (au moins une méthode virtuelle)
-
+include typeinfo
 	class	Parent	{ public: virtual ~Parent( void ) {} }
 	class	Child: public Parent	{};
 
