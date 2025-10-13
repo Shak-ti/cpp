@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:32:33 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/11 19:09:58 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/13 11:46:52 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 # include <iostream>
 # include <cstdlib>
 # include <cstring>
+# include <errno.h>
+# include <limits.h>
+# include <float.h>
+# include <iomanip>
 
 class ScalarConverter {
 	protected:
 		ScalarConverter( void );
-		ScalarConverter( ScalarConverter& const );
+		ScalarConverter( const ScalarConverter& );
 		~ScalarConverter( void );
-		ScalarConverter&	operator=( ScalarConverter& const );
+		ScalarConverter&	operator=( const ScalarConverter& );
 
 	public:
 		static void	convert( const std::string& );
