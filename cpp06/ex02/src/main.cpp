@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:30:44 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/13 16:06:11 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/14 15:53:03 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int	main( void ) {
 	identify(&b);
 	std::cout << std::endl << "IDENTIFYING C BY ADRESS:" << std::endl;
 	identify(&c);
+	
+	delete(Test);
 	return (0);
 }

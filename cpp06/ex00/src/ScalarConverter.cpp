@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:32:28 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/14 14:02:10 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/14 15:57:10 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,17 @@ ScalarConverter&	ScalarConverter::operator=( const ScalarConverter& copy ) {
 	return (*this);
 }
 
-void	printMessage( std::string charMsg, int i, float f, double d ) {
+void	printMessage( char c, int i, float f, double d ) {
 
+	std::string	charMsg;
+	if (i < CHAR_MIN || i > CHAR_MAX) {
+		charMsg = "IMPOSSIBLE";
+	} else if (!isprint(c)) {
+		charMsg = "Non displayable";
+	} else {
+		charMsg = c;
+	}
+	
 	std::cout << "char : " << charMsg << std::endl;
 	std::cout << "int : " << i << std::endl;
 	std::cout << std::fixed << std::setprecision(6) << "float : " << f << "f" << std::endl;
@@ -38,55 +47,31 @@ void	convertChar( char c ) {
 	float	f = static_cast<float>(c);
 	double	d = static_cast<double>(c);
 
-	printMessage(&c, i, f, d);
+	printMessage(c, i, f, d);
 }
 
 void	convertInt( int i ) {
 	char		c = static_cast<char>(i);
 	float		f = static_cast<float>(i);
-	double		d = static_cast<double>(i);
-	std::string	charMsg;
-	
-	if (i < CHAR_MIN || i > CHAR_MAX) {
-		charMsg = "IMPOSSIBLE";
-	} else if (!isprint(c)) {
-		charMsg = "Non displayable";
-	} else {
-		charMsg = c;
-	}
-	printMessage(charMsg, i, f, d);
+	double		d = static_cast<double>(i);	
+
+	printMessage(c, i, f, d);
 }
 
 void	convertFloat( float f ) {
 	int			i = static_cast<int>(f);
 	char		c = static_cast<char>(f);
 	double		d = static_cast<double>(f);	
-	std::string	charMsg;
-	
-	if (i > CHAR_MAX || i < CHAR_MIN) {
-		charMsg = "IMPOSSIBLE";
-	} else if (!isprint(c)) {
-		charMsg = "Non displayable";
-	} else {
-		charMsg = c;
-	}
-	printMessage(charMsg, i, f, d);
+
+	printMessage(c, i, f, d);
 }
 
 void	convertDouble( double d ) {
 	int			i = static_cast<int>(d);
 	char		c = static_cast<char>(d);
 	float		f = static_cast<float>(d);
-	std::string	charMsg;
-	
-	if (i > CHAR_MAX || i < CHAR_MIN) {
-		charMsg = "IMPOSSIBLE";
-	} else if (!isprint(c)) {
-		charMsg = "Non displayable";
-	} else {
-		charMsg = c;
-	}
-	printMessage(charMsg, i, f, d);
+
+	printMessage(c, i, f, d);
 }
 
 void	ScalarConverter::convert( const std::string& input ) {
