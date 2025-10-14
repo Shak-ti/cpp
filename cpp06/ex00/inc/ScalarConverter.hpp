@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:32:33 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/13 11:46:52 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/14 09:33:53 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include <iomanip>
 
 class ScalarConverter {
-	protected:
+	private:
 		ScalarConverter( void );
 		ScalarConverter( const ScalarConverter& );
 		~ScalarConverter( void );
 		ScalarConverter&	operator=( const ScalarConverter& );
-
+		
 	public:
 		static void	convert( const std::string& );
 };
