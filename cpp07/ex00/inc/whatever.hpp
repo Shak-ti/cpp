@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:29:27 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/13 18:22:45 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/14 16:05:05 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class Whatever {
 	public:
 		Whatever( void );
 		Whatever( int, std::string );
+		Whatever( const Whatever& );
 		~Whatever();
 		Whatever&	operator=( Whatever const & );
 		bool		operator<( Whatever const & )const ;

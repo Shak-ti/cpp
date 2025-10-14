@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:23:51 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/13 18:24:19 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/14 16:06:47 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ Whatever::Whatever( int number, std::string name ) :
 	_number(number),
 	_name(name) {}
 
+Whatever::Whatever( const Whatever& toCopy ) :
+	_number(toCopy.getNumber()),
+	_name(toCopy.getName()) {}
+	
 Whatever::~Whatever() {}
 
 Whatever&	Whatever::operator=( Whatever const & rhs) {
