@@ -5,58 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/01 12:32:47 by sconiat           #+#    #+#              #
-#    Updated: 2025/10/08 21:44:03 by sconiat          ###   ########.fr        #
+#    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
+#    Updated: 2025/10/18 16:00:03 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-COMP = c++
-CFLAG = -Wall -Werror -Wextra -g3 -std=c++98 -MMD
-SRC_DIR = src
-OBJ_DIR = obj
-INC_DIR = include
+CXX			= c++
+CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD
 
-NAME = $(notdir $(PWD)) 
+NAME		= Iter
 
-SRC = $(shell find $(SRC_DIR) -name "*.cpp")
+SRC_DIR		= src
+OBJ_DIR 	= obj
+INC_DIR 	= inc
 
-OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+SRC			= main.cpp
+SRC			:= $(addprefix $(SRC_DIR)/, $(SRC))
 
-DEP = $(OBJ:.o=.d)
+OBJ			= $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
-all: clear_terminal $(NAME)
-		@echo "\033[1;32m💥 Compilation terminée ! 💥\033[0m"
-		@echo "\033[1;33m🔨 Projet prêt ! 🎉\033[0m"
-		@echo "\033[1;33m🔨 Lancer avec ./$(NAME) 🎉\033[0m"
+DEP			= $(OBJ:.o=.d)
 
-clear_terminal:
-		@clear
+all: $(NAME)
 
 $(NAME): $(OBJ)
-		@echo "\033[1;33m🔧 Liaison...\033[0m"
-		@$(COMP) $(CFLAG) $(OBJ) -o $(NAME)
-		@echo "\033[1;32m🚀 $(NAME) généré !\033[0m"
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-		@echo "\033[1;34m📂 Compilation $<...\033[0m"
-		@$(COMP) $(CFLAG) -I$(INC_DIR) -c $< -o $@
-		@echo "\033[1;32m✅ $< compilé !\033[0m"
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):
-		@mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 
-clean: clear_terminal
-		@echo "\033[1;31m🧹 Suppression des .o et .d...\033[0m"
-		@rm -rf $(OBJ_DIR)
-		@echo "\033[1;32m🗑️ .o et .d supprimés.\033[0m"
+clean:
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-		@echo "\033[1;31m🔥 Suppression $(NAME)...\033[0m"
-		@rm -f $(NAME)
-		@echo "\033[1;32m🔥 $(NAME) supprimé.\033[0m"
+	rm -f $(NAME)
 
 re: fclean all
 
 -include $(DEP)
 
-.PHONY: all clean fclean re clear_terminal
+.PHONY: all clean fclean re
