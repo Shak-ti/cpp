@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:16:25 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/14 16:35:22 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/18 15:19:54 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,19 @@
 # include <stdexcept>
 
 template <typename T> class Array {
+	private:
+		T*				_array;
+		unsigned int	_size;
+
 	public:
-		Array( void ) : array(NULL) {}
-		Array( unsigned int n ) : array(new T[n]) { //vérifier le fail
-			for (size_t i = 0; i < n; i++) {
-				this->array[i] = NULL;
-			}
-		}
+		Array( void );		
+		Array( unsigned int );
+		Array( const Array& );
+		~Array();
 		
-		Array( const Array& toCopy ) : array(new T[toCopy.size()]) {
-			for (size_t i = 0; i < toCopy.size(); i++) {
-				this->array[i] = toCopy.array[i];
-			}
-		}
-		
-		~Array() {
-			delete[] array;
-		}
-		
-		Array&	operator=( Array const & ) {
-			if ()
-			return (*this);
-		}
-		
-		T*	array;
-		
-		unsigned int	size( void )const {}
+		Array&			operator=( Array<T> const & );
+		T&				operator[]( size_t );
+		unsigned int	size( void ) const;
 
 		class	OutOfBoundsException : public std::exception {
 			public:
@@ -51,4 +38,5 @@ template <typename T> class Array {
 		};
 };
 
+# include "../inc/Array.tpp"
 #endif
