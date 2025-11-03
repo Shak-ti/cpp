@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   easyfind.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/03 11:44:42 by sconiat          ###   ########.fr       */
+/*   Created: 2025/10/18 16:23:16 by sconiat           #+#    #+#             */
+/*   Updated: 2025/11/03 11:34:13 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
-# include <iostream>
-# include <stdexcept>
-# include <algorithm>
+#include "easyfind.hpp"
 
 template <typename T>
-typename T::const_iterator	easyfind( const T& haystack, int needle );
-
-class NotFoundException : public std::exception {
-	public:
-		const char* what() const throw() {
-			return ("Couldn't find value in container");
-		}
-};
-
-
-# include "./easyfind.tpp"
-#endif
+void easyfind(const T& haystack, int needle) {
+	typename T::const_iterator it;
+	
+	it = std::find(haystack.begin(), haystack.end(), needle);
+	if (it != haystack.end()) {
+		std::cout << "Found " << needle << " at index " << std::distance(haystack.begin(), it) << std::endl;
+	} else {
+		std::cout << needle << " not found" << std::endl;
+	}
+}
