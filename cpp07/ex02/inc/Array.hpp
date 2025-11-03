@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:16:25 by sconiat           #+#    #+#             */
-/*   Updated: 2025/10/18 15:19:54 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/10/18 16:24:10 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ template <typename T> class Array {
 		};
 };
 
-# include "../inc/Array.tpp"
+# include "./Array.tpp"
 #endif
