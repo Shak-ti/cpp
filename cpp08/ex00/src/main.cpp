@@ -6,13 +6,17 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/03 12:07:37 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/03 15:14:24 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/easyfind.hpp"
 #include <vector>
 #include <list>
+
+const char* NotFoundException::what() const throw() {
+	return ("Couldn't find value in container");
+}
 
 int	main( void ) {
 	std::vector<int>	Vector;
