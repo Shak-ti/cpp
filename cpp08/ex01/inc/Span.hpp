@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/03 16:16:11 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:11:23 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,18 @@ class Span {
 		unsigned int		shortestSpan( void ) const;
 		unsigned int		longestSpan( void ) const;
 
-		unsigned int		getN( void );
+		unsigned int		getN( void ) const;
 		void				setN( unsigned int );
-		unsigned int		getSize( void );
+		unsigned int		getSize( void ) const;
 		void				incrementSize( void );
+		void				print( void ) const;
 		
 		class NoSpanException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+
+		class SpanFullException : public std::exception {
 			public:
 				const char* what() const throw();
 		};

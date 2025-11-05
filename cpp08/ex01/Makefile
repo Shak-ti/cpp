@@ -6,7 +6,7 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
-#    Updated: 2025/10/17 15:23:12 by sconiat          ###   ########.fr        #
+#    Updated: 2025/11/05 14:11:59 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_DIR		= src
 OBJ_DIR 	= obj
 INC_DIR 	= inc
 
-SRC			= main.cpp
+SRC			= main.cpp Span.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC))
 
 OBJ			= $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))

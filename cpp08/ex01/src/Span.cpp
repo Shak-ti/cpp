@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:17:14 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/03 16:36:16 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:13:48 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ Span&	Span::operator=( Span& toCopy ) {
 
 void	Span::addNumber( const int& toAdd ) {
 	if (getSize() > getN()) {
-		throw Span::NoSpanException();
+		throw Span::SpanFullException();
 	}
 	this->_data.push_back(toAdd);
 	incrementSize();
@@ -54,23 +54,28 @@ void	Span::addNumber( const int& toAdd ) {
 
 void	Span::addNumbers( const std::vector<int> toAdd ) {
 	if (getSize() + toAdd.size() > getN()) {
-		throw Span::NoSpanException();
+		throw Span::SpanFullException();
 	}
-	this->_data.insert();
+	this->_data.insert(_data.end(), toAdd.begin(), toAdd.end());
 	for (size_t i = 0; i < toAdd.size(); i++) {
 		incrementSize();
 	}
 }
 
 unsigned int	Span::shortestSpan( void ) const {
-	
+	return (0);
 }
 
 unsigned int	Span::longestSpan( void ) const {
-	
+	if (this->getSize() == 0 || this->getSize() == 1) {
+		throw Span::NoSpanException();
+	}
+	int	max = *std::max_element(this->_data.begin(), this->_data.end());
+	int	min = *std::min_element(this->_data.begin(), this->_data.end());
+	return (max - min);
 }
 
-unsigned int	Span::getN( void ) {
+unsigned int	Span::getN( void ) const {
 	return (this->_N);
 }
 
@@ -78,7 +83,7 @@ void	Span::setN( unsigned int N ) {
 	this->_N = N;
 }
 
-unsigned int	Span::getSize( void ) {
+unsigned int	Span::getSize( void ) const {
 	return (this->_size);
 }
 
@@ -86,6 +91,20 @@ void	Span::incrementSize( void ) {
 	this->_size = this->_size + 1;
 }
 
+void	Span::print( void ) const {
+	std::cout << "Span : {";
+	std::cout << this->_data[0];
+	for (size_t i = 1; i < this->getSize(); i++) {
+		std::cout << ", ";
+		std::cout << this->_data[i];
+	}
+	std::cout << "}" << std::endl;
+}
+
 const char* Span::NoSpanException::what() const throw() {
 	return ("No Span can be found");
+}
+
+const char* Span::SpanFullException::what() const throw() {
+	return ("Span is full, can't add number");
 }
