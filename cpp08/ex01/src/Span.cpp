@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:17:14 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/05 14:13:48 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/17 22:26:54 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ Span&	Span::operator=( Span& toCopy ) {
 }
 
 void	Span::addNumber( const int& toAdd ) {
-	if (getSize() > getN()) {
+	if (getSize() >= getN()) {
 		throw Span::SpanFullException();
 	}
 	this->_data.push_back(toAdd);
-	incrementSize();
+	incrementSize(1);
 }
 
 void	Span::addNumbers( const std::vector<int> toAdd ) {
@@ -57,13 +57,27 @@ void	Span::addNumbers( const std::vector<int> toAdd ) {
 		throw Span::SpanFullException();
 	}
 	this->_data.insert(_data.end(), toAdd.begin(), toAdd.end());
-	for (size_t i = 0; i < toAdd.size(); i++) {
-		incrementSize();
-	}
+	incrementSize(toAdd.size());
 }
 
 unsigned int	Span::shortestSpan( void ) const {
-	return (0);
+	if (this->getSize() == 0 || this->getSize() == 1) {
+		throw Span::NoSpanException();
+	}
+	std::vector<int>	sortedCopy = this->_data;
+	unsigned int		diff = this->longestSpan();
+	unsigned int		newDiff;
+	unsigned int		i = 0;
+	
+	sort(sortedCopy.begin(), sortedCopy.end());
+	while ( diff > 0 &&  i < this->getSize() - 1) {
+		newDiff = abs(sortedCopy[i] - sortedCopy[i + 1]);
+		if ( diff > newDiff ) {
+			diff = newDiff;
+		}
+		i++;
+	}
+	return (diff);
 }
 
 unsigned int	Span::longestSpan( void ) const {
@@ -87,17 +101,24 @@ unsigned int	Span::getSize( void ) const {
 	return (this->_size);
 }
 
-void	Span::incrementSize( void ) {
-	this->_size = this->_size + 1;
+void	Span::incrementSize( unsigned int value ) {
+	this->_size = this->_size + value;
 }
 
 void	Span::print( void ) const {
 	std::cout << "Span : {";
-	std::cout << this->_data[0];
-	for (size_t i = 1; i < this->getSize(); i++) {
-		std::cout << ", ";
-		std::cout << this->_data[i];
-	}
+	if ( this->getN() ) {
+		for (size_t i = 0; i < this->getN(); i++) {
+			if ( i < this->getSize() ) {
+				std::cout << this->_data[i];
+			} else {
+				std::cout << "x";
+			}
+			if ( i + 1 < this->getN() ) {
+				std::cout << ", ";
+			}
+		}
+	}	
 	std::cout << "}" << std::endl;
 }
 
@@ -106,5 +127,5 @@ const char* Span::NoSpanException::what() const throw() {
 }
 
 const char* Span::SpanFullException::what() const throw() {
-	return ("Span is full, can't add number");
+	return ("Span is full / too much numbers to add, can't add numbers");
 }

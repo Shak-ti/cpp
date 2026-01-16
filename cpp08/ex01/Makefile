@@ -6,14 +6,14 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
-#    Updated: 2025/11/05 14:11:59 by sconiat          ###   ########.fr        #
+#    Updated: 2026/01/16 16:10:31 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD
 
-NAME		= Array
+NAME		= Span
 
 SRC_DIR		= src
 OBJ_DIR 	= obj

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2025/11/05 14:11:23 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/17 20:47:42 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class Span {
 	private:
-		unsigned int					_N;
+		unsigned int					_N; //maximum integers stored
 		std::vector<int>				_data;
 		unsigned int					_size;
 		std::vector<int>::iterator		_it;
@@ -40,7 +40,7 @@ class Span {
 		unsigned int		getN( void ) const;
 		void				setN( unsigned int );
 		unsigned int		getSize( void ) const;
-		void				incrementSize( void );
+		void				incrementSize( unsigned int );
 		void				print( void ) const;
 		
 		class NoSpanException : public std::exception {
