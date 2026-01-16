@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:17:14 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:17 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/17 22:26:54 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	Span::addNumber( const int& toAdd ) {
 	incrementSize(1);
 }
 
-void	Span::addNumber( const std::vector<int> toAdd ) {
+void	Span::addNumbers( const std::vector<int> toAdd ) {
 	if (getSize() + toAdd.size() > getN()) {
 		throw Span::SpanFullException();
 	}

@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:40 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/16 17:02:51 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	main( void ) {
 		TestSpan.addNumber(2);
 		std::cout << "Number added succesfully, result :" << std::endl;
 		TestSpan.print();
-		TestSpan.addNumber(toAdd);
+		TestSpan.addNumbers(toAdd);
 		std::cout << "Numbers added succesfully, result :" << std::endl;
 		TestSpan.print();
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN FULL SPAN" << std::endl;
-		TestSpan.addNumber(toAdd);
+		TestSpan.addNumbers(toAdd);
 		std::cout << "Numbers added succesfully" << std::endl;
 		TestSpan.print();
 	} catch ( Span::SpanFullException& except ) {
@@ -129,7 +129,7 @@ int	main( void ) {
 		VeryBigSpan.addNumber(2);
 		std::cout << "Numbers added succesfully, result :" << std::endl;
 		VeryBigSpan.print();
-		VeryBigSpan.addNumber(toAddBig);
+		VeryBigSpan.addNumbers(toAddBig);
 		std::cout << "Numbers added succesfully, result :" << std::endl;
 		VeryBigSpan.print();
 	} catch ( Span::SpanFullException& except ) {
@@ -168,7 +168,7 @@ int	main( void ) {
 		NegativeSpan.addNumber(-1);
 		std::cout << "Number added succesfully, result :" << std::endl;
 		NegativeSpan.print();
-		NegativeSpan.addNumber(toAddNegative);
+		NegativeSpan.addNumbers(toAddNegative);
 		std::cout << "Numbers added succesfully, result :" << std::endl;
 		NegativeSpan.print();
 	} catch ( Span::SpanFullException& except ) {

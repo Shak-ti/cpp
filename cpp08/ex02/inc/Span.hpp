@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:09 by sconiat          ###   ########.fr       */
+/*   Updated: 2025/11/17 20:47:42 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Span {
 		Span& 				operator=( Span& );
 		
 		void				addNumber( const int& );
-		void				addNumber( const std::vector<int> );
+		void				addNumbers( const std::vector<int> );
 		unsigned int		shortestSpan( void ) const;
 		unsigned int		longestSpan( void ) const;
 
