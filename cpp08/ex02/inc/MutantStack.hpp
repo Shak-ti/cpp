@@ -17,16 +17,16 @@
 # include <deque>
 
 template <typename T>
-typedef	MutantStack<T>::stack<T>::container_type::iterator	iterator;
 class MutantStack : public std::stack<T> {
-		
+	
 	public:
 		MutantStack( void );
 		MutantStack( const MutantStack<T>& );
 		~MutantStack( void );
-
+	
 		MutantStack<T>&	operator=( MutantStack<T>& );
-
+	
+		typedef	typename std::stack<T>::container_type::iterator	iterator;
 		
 		iterator	begin() {
 			return (this->c.begin());

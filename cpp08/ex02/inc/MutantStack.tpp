@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 14:49:27 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/17 19:17:28 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:58:18 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ template <typename T>
 MutantStack<T>&	MutantStack<T>::operator=( MutantStack<T>& toCopy ) {
 	std::cout << "Assignement operator called" << std::endl;
 	if (this != &toCopy) {
+		std::stack<T>::operator=(toCopy);
 	}
 	return (*this);
 }
