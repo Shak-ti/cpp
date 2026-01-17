@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:09 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:47:43 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ class Span {
 		void				setN( unsigned int );
 		unsigned int		getSize( void ) const;
 		void				incrementSize( unsigned int );
-		void				print( void ) const;
+		int					getData( unsigned int ) const;
+		void				setData( int, unsigned int );
 		
 		class NoSpanException : public std::exception {
 			public:
@@ -53,5 +54,7 @@ class Span {
 				const char* what() const throw();
 		};
 };
+
+std::ostream&	operator<<( std::ostream& os, const Span& toPrint );
 
 #endif

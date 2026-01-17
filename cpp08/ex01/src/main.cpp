@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:40 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:53:50 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,18 @@ int	main( void ) {
 	toAdd.push_back(4);
 	toAdd.push_back(5);
 	
+	std::cout << TestSpan;
 	try {
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN NOT FULL SPAN" << std::endl;
 		TestSpan.addNumber(1);
-		std::cout << "Number added succesfully, result :" << std::endl;
-		TestSpan.print();
+		std::cout << "Number added succesfully, result :" << std::endl << TestSpan << std::endl;
 		TestSpan.addNumber(2);
-		std::cout << "Number added succesfully, result :" << std::endl;
-		TestSpan.print();
+		std::cout << "Number added succesfully, result :" << std::endl << TestSpan << std::endl;
 		TestSpan.addNumber(toAdd);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		TestSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << TestSpan << std::endl;
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN FULL SPAN" << std::endl;
 		TestSpan.addNumber(toAdd);
-		std::cout << "Numbers added succesfully" << std::endl;
-		TestSpan.print();
+		std::cout << "Numbers added succesfully" << std::endl << TestSpan << std::endl;
 	} catch ( Span::SpanFullException& except ) {
 		std::cout << except.what() << std::endl;
 	}
@@ -58,13 +55,12 @@ int	main( void ) {
 	std::cout << "SPAN OF SIZE 0 :" << std::endl;
 	size = 0;
 	Span				ZeroSpan(size);
-	ZeroSpan.print();
+	std::cout << ZeroSpan;
 	
 	try	{
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN SPAN OF SIZE ZERO" << std::endl;
 		ZeroSpan.addNumber(1);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		ZeroSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << ZeroSpan << std::endl;
 	} catch ( Span::SpanFullException& except ) {
 		std::cout << except.what() << std::endl;
 	}
@@ -86,15 +82,13 @@ int	main( void ) {
 	size = 1;
 	Span				OneSpan(size);
 	
-	OneSpan.print();
+	std::cout << OneSpan;
 	try	{
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN SPAN OF SIZE ONE" << std::endl;
 		OneSpan.addNumber(1);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		OneSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << OneSpan << std::endl;
 		OneSpan.addNumber(2);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		OneSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << OneSpan << std::endl;
 	} catch ( Span::SpanFullException& except ) {
 		std::cout << except.what() << std::endl;
 	}
@@ -115,8 +109,9 @@ int	main( void ) {
 	std::cout << "VERY BIG SPAN :" << std::endl;
 	size = 1000; //can update to more
 	Span				VeryBigSpan(size);
-	VeryBigSpan.print();
 
+	std::cout << VeryBigSpan;
+	
 	std::vector<int>	toAddBig;
 	for (size_t i = 3; i <= size; i++)
 		toAddBig.push_back(i);
@@ -124,14 +119,11 @@ int	main( void ) {
 	try	{
 		std::cout << std::endl << "	-> TRYING TO ADD NUMBERS IN VERY BIG SPAN" << std::endl;
 		VeryBigSpan.addNumber(1);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		VeryBigSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << VeryBigSpan << std::endl;
 		VeryBigSpan.addNumber(2);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		VeryBigSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << VeryBigSpan << std::endl;
 		VeryBigSpan.addNumber(toAddBig);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		VeryBigSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << VeryBigSpan << std::endl;
 	} catch ( Span::SpanFullException& except ) {
 		std::cout << except.what() << std::endl;
 	}
@@ -152,7 +144,8 @@ int	main( void ) {
 	std::cout << "NEGATIVE SPAN :" << std::endl;
 	size = 5;
 	Span				NegativeSpan(size);
-	NegativeSpan.print();
+
+	std::cout << NegativeSpan;
 	
 	std::vector<int>	toAddNegative;
 
@@ -163,14 +156,11 @@ int	main( void ) {
 	try {
 		std::cout << std::endl << "	-> TRYING TO ADD NEGATIVE NUMBERS" << std::endl;
 		NegativeSpan.addNumber(0);
-		std::cout << "Number added succesfully, result :" << std::endl;
-		NegativeSpan.print();
+		std::cout << "Number added succesfully, result :" << std::endl << NegativeSpan << std::endl;
 		NegativeSpan.addNumber(-1);
-		std::cout << "Number added succesfully, result :" << std::endl;
-		NegativeSpan.print();
+		std::cout << "Number added succesfully, result :" << std::endl << NegativeSpan << std::endl;
 		NegativeSpan.addNumber(toAddNegative);
-		std::cout << "Numbers added succesfully, result :" << std::endl;
-		NegativeSpan.print();
+		std::cout << "Numbers added succesfully, result :" << std::endl << NegativeSpan << std::endl;
 	} catch ( Span::SpanFullException& except ) {
 		std::cout << except.what() << std::endl;
 	}

@@ -13,42 +13,43 @@
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 # include <iostream>
-# include <stdexcept>
-# include <algorithm>
 # include <stack>
+# include <deque>
 
-template <typename T> class MutantStack {
-	private:
-		std::stack<T>	_data;
+template <typename T>
+typedef	MutantStack<T>::stack<T>::container_type::iterator	iterator;
+class MutantStack : public std::stack<T> {
 		
 	public:
 		MutantStack( void );
-		MutantStack( MutantStack<T>& );
+		MutantStack( const MutantStack<T>& );
 		~MutantStack( void );
 
 		MutantStack<T>&	operator=( MutantStack<T>& );
-		
-		// void			print( void ) const;
-		
-		//Member functions :
-		bool			empty( void ) const;
-		unsigned int	size( void ) const;
-		T&				top( void );
-		void			push( const T& );
-		void			emplace( T& );
-		void			pop( void );
-		void			swap( std::stack<T>& ); //non member ?
 
-		// class NoMutantStackException : public std::exception {
-		// 	public:
-		// 		const char* what() const throw();
-		// };
+		
+		iterator	begin() {
+			return (this->c.begin());
+		}
 
-		// class MutantStackFullException : public std::exception {
-		// 	public:
-		// 		const char* what() const throw();
-		// };
+		iterator	end() {
+			return (this->c.end());
+		}
+
+		iterator	rbegin() {
+			return (this->c.rbegin());
+		}
+
+		iterator	rend() {
+			return (this->c.rend());
+		}
 };
+
+
+
+// const iterator ?
+//virer fonction print + copy constructor const
+
 
 # include "./MutantStack.tpp"
 #endif

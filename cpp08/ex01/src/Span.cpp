@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:17:14 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/16 17:04:17 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:48:34 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,31 @@ void	Span::incrementSize( unsigned int value ) {
 	this->_size = this->_size + value;
 }
 
-void	Span::print( void ) const {
-	std::cout << "Span : {";
-	if ( this->getN() ) {
-		for (size_t i = 0; i < this->getN(); i++) {
-			if ( i < this->getSize() ) {
-				std::cout << this->_data[i];
+int	Span::getData( unsigned int index ) const {
+	return (this->_data[index]);
+}
+
+void	Span::setData( int value, unsigned int index ) {
+	this->_data[index] = value;
+}
+
+std::ostream&	operator<<( std::ostream& os, const Span& toPrint )
+{
+	os << "Span : {";
+	if ( toPrint.getN() ) {
+		for (size_t i = 0; i < toPrint.getN(); i++) {
+			if ( i < toPrint.getSize() ) {
+				os << toPrint.getData(i);
 			} else {
-				std::cout << "x";
+				os << "x";
 			}
-			if ( i + 1 < this->getN() ) {
-				std::cout << ", ";
+			if ( i + 1 < toPrint.getN() ) {
+				os << ", ";
 			}
 		}
 	}	
-	std::cout << "}" << std::endl;
+	os << "}" << std::endl;
+	return (os);
 }
 
 const char* Span::NoSpanException::what() const throw() {
