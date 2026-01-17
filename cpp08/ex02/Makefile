@@ -6,20 +6,20 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
-#    Updated: 2026/01/16 16:10:31 by sconiat          ###   ########.fr        #
+#    Updated: 2026/01/17 14:52:34 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD
 
-NAME		= Span
+NAME		= Mutant
 
 SRC_DIR		= src
 OBJ_DIR 	= obj
 INC_DIR 	= inc
 
-SRC			= main.cpp Span.cpp
+SRC			= main.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC))
 
 OBJ			= $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
