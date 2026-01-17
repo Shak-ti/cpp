@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/17 19:47:43 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:58:50 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Span {
 	public:
 		Span( void );
 		Span( unsigned int& );
-		Span( Span& );
+		Span( const Span& );
 		~Span( void );
 
 		Span& 				operator=( Span& );

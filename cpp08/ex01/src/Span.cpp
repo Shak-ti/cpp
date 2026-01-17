@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:17:14 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/17 19:48:34 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/17 19:59:04 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Span::Span( unsigned int& N ) :	_N(N),
 	this->_it = this->_data.begin();
 }
 
-Span::Span( Span& toCopy ) :	_N(toCopy.getN()),
+Span::Span( const Span& toCopy ) :	_N(toCopy.getN()),
 								_size(toCopy.getSize()) {
 	std::cout << "Copy constructor called" << std::endl;
 	_data = toCopy._data;
