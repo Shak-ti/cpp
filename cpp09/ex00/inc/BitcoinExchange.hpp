@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/21 18:39:07 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/21 20:38:55 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,10 @@
 # define FAILURE -1
 # define SUCCESS 0
 
-// class Date
-// {
-// 	private:
-
-// 		int	_year;
-// 		int	_month;
-// 		int	_day;
-
-// 	public:
-// 		Date( void );
-// 		Date( const Date& );
-// 		Date( std::ifstream& );
-// 		~Date( void );
-
-// 		Date&	operator>( const Date& );
-
-// 		int		getValue( const Date& ) const;
-// 		void	setValue( Date, int );
-// };
-
-//use time_t
-
 class	BitcoinExchange
 {
 	private:
-		std::map<time_t, int>	_data;
+		std::map<std::string, int>	_data;
 		
 		int	parseLine( const std::string& ) const;
 
@@ -61,17 +39,17 @@ class	BitcoinExchange
 
 		BitcoinExchange&	operator=( const BitcoinExchange& );
 
-		int		getValue( const time_t& ) const;
-		void	setValue( time_t, int );
+		int		getValue( const std::string& ) const;
+		void	setValue( std::string, int );
 
-		// class BitcoinExchangeExcept : public std::exception {
-		// 	private:
-		// 		std::string	errorMessage;
+		class BitcoinExchangeException : public std::exception {
+			private:
+				std::string	errorMessage;
 				
-		// 	public:
-		// 		BitcoinExchangeExcept( const std::string& );
-		// 		virtual const char* what() const throw();
-		// };
+			public:
+				BitcoinExchangeException( const std::string& );
+				virtual const char* what() const throw();
+		};
 };
 
 #endif

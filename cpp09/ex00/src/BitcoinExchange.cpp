@@ -6,27 +6,18 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 14:56:12 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/21 18:38:59 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/21 20:37:45 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange( void ) 
-{
-	std::cout << "BitcoinExchange default constructor called" << std::endl;
-}
+BitcoinExchange::BitcoinExchange( void ) {}
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange& toCopy ) :
-	_data(toCopy._data)
-{
-	std::cout << "BitcoinExchange copy constructor called" << std::endl;
-}
+	_data(toCopy._data) {}
 
-BitcoinExchange::~BitcoinExchange( void ) 
-{
-	std::cout << "BitcoinExchange destructor called" << std::endl;
-}
+BitcoinExchange::~BitcoinExchange( void ) {}
 
 BitcoinExchange&	BitcoinExchange::operator=( const BitcoinExchange& toCopy )
 {
@@ -49,31 +40,35 @@ BitcoinExchange::BitcoinExchange( std::ifstream& file )
 
 	std::string	line;
 
-	std::getline(file, line);
-	std::cout << line;
+	while (std::getline(file, line))
+	{
+		std::cout << line << std::endl;
+		if (parseLine(line) == FAILURE)
+			throw BitcoinExchange::BitcoinExchangeException("bad line");
+	}
+	
 	//std::getline from std::string
 
 	//line valid
 	//	- date
 	//	- value
-	//date après date précedente
-	
-	// throw BitcoinExchange::BitcoinExchangeExcept("");
+	//trim date
+	//date après date précedente (comparer directement string)
 }
 
-int	BitcoinExchange::getValue( const time_t& key ) const
+int	BitcoinExchange::getValue( const std::string& key ) const
 {
 	return (this->_data.at(key));
 }
 
-void	BitcoinExchange::setValue( time_t key, int value)
+void	BitcoinExchange::setValue( std::string key, int value)
 {
 	this->_data.insert(std::make_pair(key, value));
 }
 
-// BitcoinExchange::BitcoinExchangeExcept::BitcoinExchangeExcept( const std::string& msg ) :
-// 	errorMessage("Error : " + msg + ".") {}
+BitcoinExchange::BitcoinExchangeException::BitcoinExchangeException( const std::string& msg ) :
+	errorMessage("Error : " + msg + ".") {}
 
-// const char* BitcoinExchange::BitcoinExchangeExcept::what() const throw() {
-// 	return (errorMessage.c_str());
-// }
+const char* BitcoinExchange::BitcoinExchangeException::what() const throw() {
+	return (errorMessage.c_str());
+}

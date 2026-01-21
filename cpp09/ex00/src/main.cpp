@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/21 18:05:06 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/21 20:33:29 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ int	main( int argc, char **argv ) {
 
 	// try {
 	BitcoinExchange	data(dataStream);
-	// } catch (BitcoinExchange::BitcoinExchangeExcept& except) {
+	// } catch (BitcoinExchange::BitcoinExchangeException& except) {
 	// 	std::cout << except.what() << std::endl;
 	// }
 	
 	//parse input : date dans l'ordre chronologique (getline)
+	dataStream.close();
+	inputStream.close();
 	return (0);
 }
