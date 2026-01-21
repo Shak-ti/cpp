@@ -27,29 +27,12 @@ class MutantStack : public std::stack<T> {
 		MutantStack<T>&	operator=( MutantStack<T>& );
 	
 		typedef	typename std::stack<T>::container_type::iterator	iterator;
-		
-		iterator	begin() {
-			return (this->c.begin());
-		}
 
-		iterator	end() {
-			return (this->c.end());
-		}
-
-		iterator	rbegin() {
-			return (this->c.rbegin());
-		}
-
-		iterator	rend() {
-			return (this->c.rend());
-		}
+		iterator	begin();
+		iterator	end();
+		iterator	rbegin();
+		iterator	rend();
 };
-
-
-
-// const iterator ?
-//virer fonction print + copy constructor const
-
 
 # include "./MutantStack.tpp"
 #endif
