@@ -6,12 +6,12 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
-#    Updated: 2026/01/21 14:57:29 by sconiat          ###   ########.fr        #
+#    Updated: 2026/01/23 17:08:47 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			= c++
-CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD
+CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD -stdlib=libstdc++
 
 NAME		= btc
 
