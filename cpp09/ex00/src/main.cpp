@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/26 13:20:23 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/26 16:24:25 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	checkInput( int argc, char **argv, std::ifstream* file)
 
 int	checkData( std::ifstream* file)
 {
-	file->open("testdata.csv");
+	file->open("data.csv");
 	if (!file->is_open())
 		return (printError("Error: could not open data.csv file."), FAILURE);
 	
@@ -45,7 +45,7 @@ int	checkData( std::ifstream* file)
 	return (SUCCESS);
 }
 
-std::string	trimLine( std::string line )
+std::string	trimLine( std::string& line )
 {
 	std::string	res = "";
 	
@@ -57,12 +57,12 @@ std::string	trimLine( std::string line )
 	return (res);
 }
 
-int	leapYear(int y)
+int	leapYear(const int& y)
 {
 	return ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0);
 }
 
-int	testDate( int y, int m, int d )
+int	testDate( const int& y, const int& m, const int& d )
 {
 	int m31_arr[] = {1, 3, 5, 7, 8, 10, 12};
 	std::vector<int> m31(m31_arr, m31_arr + 7);
@@ -85,34 +85,85 @@ int	testDate( int y, int m, int d )
 	return (SUCCESS);
 }
 
-int	parseData( std::map<std::string, int>& data, std::ifstream& file )
+int	parseData( std::map<std::string, float>& data, std::ifstream& file )
 {
-	(void) data;
-	
 	std::string	line;
-	int day, month, year, exchangeRate;
+	int 		day, month, year;
+	float		exchangeRate;
 	
 	while (std::getline(file, line))
 	{
-		std::cout << line << std::endl;
 		line = trimLine(line);
-		if (sscanf(line.c_str(), "%d-%d-%d,%d", &year, &month, &day, &exchangeRate) < 4)
+		if (line == "")
+			continue;
+		if (sscanf(line.c_str(), "%d-%d-%d,%f", &year, &month, &day, &exchangeRate) < 4)
 			return (printError("Error: invalid data format."), FAILURE);
-		// std::cout << year << "-" << month << "-"  << day << ", " << exchangeRate << std::endl;
 		if (testDate(year, month, day) == FAILURE)
 			return (FAILURE);
 		if (exchangeRate < 0)
 			return (printError("Error: invalid data format (negative exchange rate)."), FAILURE);
 		data.insert(std::make_pair(line.substr(0, 10), exchangeRate));
 	}
+	if (data.empty())
+		return (printError("Error: data is empty (no valid values)."), FAILURE);
 	return (SUCCESS);
+}
+
+float	findClosest(std::string date, std::map<std::string, float>& data)
+{
+	float									tempValue;
+	std::map<std::string, float>::iterator	it = data.begin();
+	
+	tempValue = it->second;
+	while (it != data.end())
+	{
+		it++;
+		if (it->first > date)
+			return (tempValue);
+		tempValue = it->second;
+	}
+	return (tempValue);
+}
+
+void	processInput(std::map<std::string, float> data, std::ifstream& file)
+{
+	std::string	line;
+	int 		day, month, year;
+	float		value;
+	
+	while (std::getline(file, line))
+	{
+		line = trimLine(line);
+		// std::cout << line << std::endl;
+		if (sscanf(line.c_str(), "%d-%d-%d|%f", &year, &month, &day, &value) < 4) {
+			printError("Error: bad input => " + line.substr(0, 10));
+			continue;
+		} else if (testDate(year, month, day) == FAILURE)
+			continue;
+		if (value < 0)
+		{
+			printError("Error: not a positive number.");
+			continue;
+		} else if (value > 1000) {
+			printError("Error: too large a number.");
+			continue;
+		} else {
+			if (data.find(line.substr(0, 10)) != data.end())
+				std::cout << line.substr(0, 10) << " => " << value << " = " << data[line.substr(0, 10)] * value << std::endl;
+			else
+				std::cout << line.substr(0, 10) << " => " << value << " = " << findClosest(line.substr(0, 10), data) * value << std::endl;
+		}
+	}
+// std::cout << year << "-" << month << "-"  << day << ", " << value << std::endl;
+	//spaces bad ?
+	// 20,20-02-02, 23,234
 }
 
 int	main( int argc, char **argv ) {
 
 	std::ifstream				dataStream;
 	std::ifstream				inputStream;
-	std::map<std::string, int>	data;
+	std::map<std::string, float>	data;
 	
 	if (checkInput(argc, argv, &inputStream) == FAILURE)
 		return (1);
@@ -120,13 +171,12 @@ int	main( int argc, char **argv ) {
 		return (1);
 	if (parseData(data, dataStream) == FAILURE)
 		return (1);
-	
-	std::cout << "DATA :" << std::endl;
-	for(std::map<std::string, int>::const_iterator it = data.begin(); it != data.end(); ++it)
-		std::cout << it->first << ", " << it->second << std::endl;
-
-		
+	processInput(data, inputStream);
 	dataStream.close();
 	inputStream.close();
 	return (0);
 }
+
+// std::cout << "DATA :" << std::endl;
+// for(std::map<std::string, float>::const_iterator it = data.begin(); it != data.end(); ++it)
+// 	std::cout << it->first << ", " << it->second << std::endl;
