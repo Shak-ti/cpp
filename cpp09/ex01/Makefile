@@ -6,20 +6,20 @@
 #    By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/17 14:54:45 by sconiat           #+#    #+#              #
-#    Updated: 2026/01/21 17:24:21 by sconiat          ###   ########.fr        #
+#    Updated: 2026/01/26 16:41:36 by sconiat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98 -MMD
 
-NAME		= Span
+NAME		= RPN
 
 SRC_DIR		= src
 OBJ_DIR 	= obj
 INC_DIR 	= inc
 
-SRC			= main.cpp
+SRC			= main.cpp RPN.cpp
 SRC			:= $(addprefix $(SRC_DIR)/, $(SRC))
 
 OBJ			= $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))

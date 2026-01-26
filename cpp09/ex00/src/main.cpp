@@ -64,19 +64,15 @@ int	leapYear(const int& y)
 
 int	testDate( const int& y, const int& m, const int& d )
 {
-	int m31_arr[] = {1, 3, 5, 7, 8, 10, 12};
-	std::vector<int> m31(m31_arr, m31_arr + 7);
-	int m30_arr[] = {4, 6, 9, 11};
-	std::vector<int> m30(m30_arr, m30_arr + 4);
 	if (y > 2026 || y < 0)
 		return (printError("Error: invalid year."), FAILURE);
 	if (m > 12 || m < 1)
 		return (printError("Error: invalid month."), FAILURE);
 	if (d < 1)
 		return (printError("Error: invalid day (too low)."), FAILURE);
-	if (std::find(m31.begin(), m31.end(), m) != m31.end() && (d > 31))
+	if ((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && (d > 31))
 		return (printError("Error: invalid day (too high)."), FAILURE);
-	if (std::find(m30.begin(), m30.end(), m) != m30.end() && (d > 30))
+	if ((m == 4 || m == 6 || m == 9 || m == 11) && (d > 30))
 		return (printError("Error: invalid day (too high)."), FAILURE);
 	if (m == 2 && !leapYear(y) && (d > 28))
 		return (printError("Error: invalid day (too high february)."), FAILURE);

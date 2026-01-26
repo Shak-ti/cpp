@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 16:21:56 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/26 16:48:09 by sconiat          ###   ########.fr       */
+/*   Created: 2026/01/26 16:40:00 by sconiat           #+#    #+#             */
+/*   Updated: 2026/01/26 16:50:14 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
-# include <iostream>
-# include <stdexcept>
-# include <algorithm>
-# include <map>
-# include <stdexcept>
-# include <fstream>
-# include <fcntl.h>
-# include <ctime>
+#include "../inc/RPN.hpp"
 
-# define FAILURE -1
-# define SUCCESS 0
+int	parseArgs(std::string args, std::stack<int> *data)
+{
+	return (SUCCESS);
+}
 
-#endif
+void	processOperation(std::stack<int> data)
+{
+	
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 2) {
+		std::cout << "Error" << std::endl;
+		return (1);
+	}
+	
+	std::stack<int>	data;
+	if (parseArgs(argv[1], &data) == FAILURE) {
+		return (1);
+	}
+	processOperation(data);
+	return (0);
+}
