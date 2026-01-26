@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:30:38 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/26 16:24:25 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/26 16:34:10 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,16 @@ void	processInput(std::map<std::string, float> data, std::ifstream& file)
 	while (std::getline(file, line))
 	{
 		line = trimLine(line);
-		// std::cout << line << std::endl;
-		if (sscanf(line.c_str(), "%d-%d-%d|%f", &year, &month, &day, &value) < 4) {
+		if (line == "")
+		{
+			printError("Error: bad input.");
+			continue;
+		} else if (sscanf(line.c_str(), "%d-%d-%d|%f", &year, &month, &day, &value) < 4) {
 			printError("Error: bad input => " + line.substr(0, 10));
 			continue;
+		// } else if () {
+		// 	printError("Error: bad input.");
+		// 	continue;
 		} else if (testDate(year, month, day) == FAILURE)
 			continue;
 		if (value < 0)
@@ -154,15 +160,12 @@ void	processInput(std::map<std::string, float> data, std::ifstream& file)
 				std::cout << line.substr(0, 10) << " => " << value << " = " << findClosest(line.substr(0, 10), data) * value << std::endl;
 		}
 	}
-// std::cout << year << "-" << month << "-"  << day << ", " << value << std::endl;
-	//spaces bad ?
-	// 20,20-02-02, 23,234
 }
 
 int	main( int argc, char **argv ) {
 
-	std::ifstream				dataStream;
-	std::ifstream				inputStream;
+	std::ifstream					dataStream;
+	std::ifstream					inputStream;
 	std::map<std::string, float>	data;
 	
 	if (checkInput(argc, argv, &inputStream) == FAILURE)
@@ -176,7 +179,3 @@ int	main( int argc, char **argv ) {
 	inputStream.close();
 	return (0);
 }
-
-// std::cout << "DATA :" << std::endl;
-// for(std::map<std::string, float>::const_iterator it = data.begin(); it != data.end(); ++it)
-// 	std::cout << it->first << ", " << it->second << std::endl;
