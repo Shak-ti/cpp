@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 16:39:50 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/26 16:48:04 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/28 12:14:09 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <algorithm>
 # include <stack>
 
-# define FAILURE -1
+# define FAILURE 1
 # define SUCCESS 0
 
 #endif
