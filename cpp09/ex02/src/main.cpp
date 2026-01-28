@@ -6,7 +6,7 @@
 /*   By: sconiat <sconiat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 16:40:00 by sconiat           #+#    #+#             */
-/*   Updated: 2026/01/28 16:52:11 by sconiat          ###   ########.fr       */
+/*   Updated: 2026/01/28 17:33:19 by sconiat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,24 @@ int	parseArgs(int argc, char **argv, std::vector<int> &vectorInput)
 	return (SUCCESS);
 }
 
+std::vector<int>	generateJacobsthal()
+{
+	std::vector<int>	res;
+	
+	res.push_back(0);
+	res.push_back(1);
+	for (size_t i = 2; i < 10; i++)
+		res.push_back(res[i - 1] + 2 * res[i - 2]);
+	return (res);
+}
+
 void	makePairs(std::vector<int> &v, std::vector<std::pair<int, int> > &vPairs)
 {
 	std::pair<int, int>	temp;
 	
 	for (std::vector<int>::size_type i = 0; i < v.size() - 1; i+=2)
 	{
-		if (v[i] <= v[i + 1])
+		if (v[i] >= v[i + 1])
 			temp = std::make_pair(v[i], v[i + 1]);
 		else
 			temp = std::make_pair(v[i + 1], v[i]);
